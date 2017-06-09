@@ -62,6 +62,7 @@ export default class DatePicker extends React.Component {
     required: PropTypes.bool,
     scrollableYearDropdown: PropTypes.bool,
     selected: PropTypes.object,
+    selectMultiple: PropTypes.bool,
     selectsEnd: PropTypes.bool,
     selectsStart: PropTypes.bool,
     showMonthDropdown: PropTypes.bool,
@@ -94,6 +95,7 @@ export default class DatePicker extends React.Component {
       popoverAttachment: 'top left',
       popoverTargetAttachment: 'bottom left',
       popoverTargetOffset: '10px 0',
+      selectMultiple: false,
       tetherConstraints: [
         {
           to: 'window',
@@ -211,7 +213,10 @@ export default class DatePicker extends React.Component {
       }
     )
     this.setSelected(date, event)
-    this.setOpen(false)
+
+    if (this.props.selectMultiple !== true) {
+      this.setOpen(false)
+    }
   }
 
   setSelected = (date, event, keepInput) => {
