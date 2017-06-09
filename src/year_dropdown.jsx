@@ -6,25 +6,79 @@ import onClickOutside from 'react-onclickoutside'
 const WrappedYearDropdownOptions = onClickOutside(YearDropdownOptions)
 
 class YearDropdown extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    
+
     this.state = {
       dropdownVisible: false
-    } 
+    }
   }
 
-  onChange(year) {
+  onChange (year) {
     this.toggleDropdown()
     if (year === this.props.year) return
     this.props.onChange(year)
   }
 
-  onSelectChange(event) {
+  onSelectChange (event) {
     this.onChange(event.target.value)
   }
 
-  render() {
+  renderDropdown () {
+    return (
+      <WrappedYearDropdownOptions key="dropdown"
+        onCancel={this.toggleDropdown}
+        onChange={this.onChange}
+        ref="options"
+        scrollableYearDropdown={this.props.scrollableYearDropdown}
+        year={this.props.year} />
+    )
+  }
+
+  renderReadView (visible) {
+    return (
+      <div key="read" style={{visibility: visible ? 'visible' : 'hidden'}} className="react-datepicker__year-read-view" onClick={this.toggleDropdown}>
+        <span className="react-datepicker__year-read-view--down-arrow" />
+        <span className="react-datepicker__year-read-view--selected-year">{this.props.year}</span>
+      </div>
+    )
+  }
+
+  renderScrollMode () {
+    const { dropdownVisible } = this.state
+    let result = [this.renderReadView(!dropdownVisible)]
+    if (dropdownVisible) {
+      result.unshift(this.renderDropdown())
+    }
+    return result
+  }
+
+  renderSelectMode () {
+    return (
+      <select className="react-datepicker__year-select"
+        onChange={this.onSelectChange}
+        value={this.props.year}>
+        {this.renderSelectOptions()}
+      </select>
+    )
+  }
+
+  renderSelectOptions () {
+    const minYear = this.props.minDate ? this.props.minDate.year() : 1900
+    const maxYear = this.props.maxDate ? this.props.maxDate.year() : 2100
+
+    let options = []
+    for (let i = minYear; i <= maxYear; i++) {
+      options.push(<option key={i} value={i}>{i}</option>)
+    }
+    return options
+  }
+
+  toggleDropdown () {
+    this.setState({ dropdownVisible: !this.state.dropdownVisible })
+  }
+
+  render () {
     let renderedDropdown
 
     switch (this.props.dropdownMode) {
@@ -37,60 +91,11 @@ class YearDropdown extends Component {
         break
     }
 
-    return(
+    return (
       <div className={`react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--${this.props.dropdownMode}`}>
         {renderedDropdown}
       </div>
     )
-  }
-
-  renderDropdown() {
-    <WrappedYearDropdownOptions
-      key="dropdown"
-      onCancel={this.toggleDropdown}
-      onChange={this.onChange}
-      ref="options"
-      scrollableYearDropdown={this.props.scrollableYearDropdown}
-      year={this.props.year} />
-  }
-
-  renderReadView(visible) {
-    <div key="read" style={{visibility: visible ? 'visible' : 'hidden'}} className="react-datepicker__year-read-view" onClick={this.toggleDropdown}>
-      <span className="react-datepicker__year-read-view--down-arrow" />
-      <span className="react-datepicker__year-read-view--selected-year">{this.props.year}</span>
-    </div>
-  }
-
-  renderScrollMode() {
-    const { dropdownVisible } = this.state
-    let result = [this.renderReadView(!dropdownVisible)]
-    if (dropdownVisible) {
-      result.unshift(this.renderDropdown())
-    }
-    return result
-  }
-
-  renderSelectMode() {
-    <select className="react-datepicker__year-select"
-      onChange={this.onSelectChange}
-      value={this.props.year}>
-      {this.renderSelectOptions()}
-    </select>
-  }
-
-  renderSelectOptions() {
-    const minYear = this.props.minDate ? this.props.minDate.year() : 1900
-    const maxYear = this.props.maxDate ? this.props.maxDate.year() : 2100
-
-    let options = []
-    for (let i = minYear; i <= maxYear; i++) {
-      options.push(<option key={i} value={i}>{i}</option>)
-    }
-    return options
-  }
-
-  toggleDropdown() {
-    this.setState({ dropdownVisible: !this.state.dropdownVisible })
   }
 }
 

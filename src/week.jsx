@@ -4,34 +4,26 @@ import Day from './day'
 import WeekNumber from './week_number'
 
 class Week extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    
+
     this.handleDayClick = this.handleDayClick.bind(this)
     this.handleDayMouseEnter = this.handleDayMouseEnter.bind(this)
   }
 
-  handleDayClick(day, event) {
+  handleDayClick (day, event) {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
   }
 
-  handleDayMouseEnter(day) {
+  handleDayMouseEnter (day) {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
   }
 
-  render() {
-    return(
-      <div className="react-datepicker__week">
-        {this.renderDays()}
-      </div>
-    )
-  }
-
-  renderDays() {
+  renderDays () {
     const startOfWeek = this.props.day.clone().startOf('week')
     let days = []
 
@@ -39,9 +31,9 @@ class Week extends Component {
       days.push(<WeekNumber key="W" weekNumber={parseInt(startOfWeek.format('w'), 10)} />)
     }
 
-    return days.concat([0, 1, 2, 3, 4, 5, 6].map( offset => {
+    return days.concat([0, 1, 2, 3, 4, 5, 6].map(offset => {
       const day = startOfWeek.clone().add(offset, 'days')
-      return(
+      return (
         <Day day={day}
           endDate={this.props.endDate}
           excludeDates={this.props.excludeDates}
@@ -53,8 +45,8 @@ class Week extends Component {
           maxDate={this.props.maxDate}
           minDate={this.props.minDate}
           month={this.props.month}
-          onClick={ e => this.handleDayClick(day, e) }
-          onMouseEnter={ e => this.handleDayMouseEnter(day, e) }
+          onClick={e => this.handleDayClick(day, e)}
+          onMouseEnter={e => this.handleDayMouseEnter(day, e)}
           preSelection={this.props.preSelection}
           selected={this.props.selected}
           selectingDate={this.props.selectingDate}
@@ -64,6 +56,14 @@ class Week extends Component {
           utcOffset={this.props.utcOffset} />
       )
     }))
+  }
+
+  render () {
+    return (
+      <div className="react-datepicker__week">
+        {this.renderDays()}
+      </div>
+    )
   }
 }
 

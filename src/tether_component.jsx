@@ -5,7 +5,7 @@ import Tether from 'tether'
 
 function childrenPropType ({ children }, propName, componentName) {
   const childCount = React.Children.count(children)
-  
+
   if (childCount <= 0) {
     return new Error(`${componentName} expects at least one child to use as the target element.`)
   }
@@ -27,7 +27,20 @@ const attachmentPositions = [
 ]
 
 class TetherComponent extends Component {
-  _destroy() {
+  componentDidMount () {
+    this._targetNode = ReactDOM.findDOMNode(this)
+    this._update()
+  }
+
+  componentDidUpdate () {
+    this._update()
+  }
+
+  componentWillUnmount () {
+    this._destroy()
+  }
+
+  _destroy () {
     if (this._elementParentNode) {
       ReactDOM.unmountComponentAtNode(this._elementParentNode)
       this._elementParentNode.parentNode.removeChild(this._elementParentNode)
@@ -41,7 +54,7 @@ class TetherComponent extends Component {
     this._tether = null
   }
 
-  _update() {
+  _update () {
     const {
       children,
       renderElementTag,
@@ -78,12 +91,12 @@ class TetherComponent extends Component {
     )
   }
 
-  _updateTether() {
+  _updateTether () {
     const {
-      renderElementTag,
-      renderElementTo,
+      renderElementTag, // eslint-disable-line no-unused-vars
+      renderElementTo, // eslint-disable-line no-unused-vars
       ...options
-    } = this.props // eslint-disable-line no-unused-vars
+    } = this.props
 
     const tetherOptions = {
       target: this._targetNode,
@@ -101,32 +114,19 @@ class TetherComponent extends Component {
     this._tether.position()
   }
 
-  componentDidMount() {
-    this._targetNode = ReactDOM.findDOMNode(this)
-    this._update()
-  }
-
-  componentDidUpdate() {
-    this._update()
-  }
-
-  componentWillUnmount() {
-    this._destroy()
-  }
-
-  disable() {
+  disable () {
     return this._tether.disable()
   }
 
-  enable() {
+  enable () {
     return this._tether.enable()
   }
 
-  position() {
+  position () {
     return this._tether.position()
   }
 
-  render() {
+  render () {
     const { children } = this.props
     let firstChild = null
 

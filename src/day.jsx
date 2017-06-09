@@ -9,7 +9,7 @@ import {
 } from './date_utils'
 
 class Day extends Component {
-  getClassNames() {
+  getClassNames () {
     return classnames('react-datepicker__day', {
       'react-datepicker__day--disabled': this.isDisabled(),
       'react-datepicker__day--selected': this.isSameDay(this.props.selected),
@@ -27,23 +27,23 @@ class Day extends Component {
     })
   }
 
-  handleClick(event) {
+  handleClick (event) {
     if (!this.isDisabled() && this.props.onClick) {
       this.props.onClick(event)
     }
   }
 
-  handleMouseEnter(event) {
+  handleMouseEnter (event) {
     if (!this.isDisabled() && this.props.onMouseEnter) {
       this.props.onMouseEnter(event)
     }
   }
 
-  isDisabled() {
+  isDisabled () {
     return isDayDisabled(this.props.day, this.props)
   }
 
-  isHighlighted() {
+  isHighlighted () {
     const {
       day,
       highlightDates
@@ -52,11 +52,11 @@ class Day extends Component {
     if (!highlightDates) {
       return false
     }
-    
+
     return highlightDates.some(testDay => isSameDay(day, testDay))
   }
 
-  isInRange() {
+  isInRange () {
     const {
       day,
       endDate,
@@ -70,7 +70,7 @@ class Day extends Component {
     return isDayInRange(day, startDate, endDate)
   }
 
-  isInSelectingRange() {
+  isInSelectingRange () {
     const {
       day,
       endDate,
@@ -95,15 +95,15 @@ class Day extends Component {
     return false
   }
 
-  isKeyboardSelected() {
+  isKeyboardSelected () {
     return !this.props.inline && !this.isSameDay(this.props.selected) && this.isSameDay(this.props.preSelection)
   }
 
-  isOutsideMonth() {
+  isOutsideMonth () {
     return this.props.month !== undefined && this.props.month !== this.props.day.month()
   }
 
-  isRangeEnd() {
+  isRangeEnd () {
     const {
       day,
       endDate,
@@ -117,7 +117,7 @@ class Day extends Component {
     return isSameDay(endDate, day)
   }
 
-  isRangeStart() {
+  isRangeStart () {
     const {
       day,
       endDate,
@@ -127,15 +127,15 @@ class Day extends Component {
     if (!startDate || !endDate) {
       return false
     }
-    
+
     return isSameDay(startDate, day)
   }
 
-  isSameDay(other) {
+  isSameDay (other) {
     return isSameDay(this.props.day, other)
   }
 
-  isSelectingRangeEnd() {
+  isSelectingRangeEnd () {
     if (!this.isInSelectingRange()) {
       return false
     }
@@ -150,7 +150,7 @@ class Day extends Component {
     return isSameDay(day, selectsEnd ? selectingDate : endDate)
   }
 
-  isSelectingRangeStart() {
+  isSelectingRangeStart () {
     if (!this.isInSelectingRange()) {
       return false
     }
@@ -165,13 +165,13 @@ class Day extends Component {
     return isSameDay(day, selectsStart ? selectingDate : startDate)
   }
 
-  isWeekend() {
+  isWeekend () {
     const weekday = this.props.day.day()
     return weekday === 0 || weekday === 6
   }
 
-  render() {
-    return(
+  render () {
+    return (
       <div aria-label={`day-${this.props.day.date()}`}
         className={this.getClassNames()}
         onClick={this.handleClick}

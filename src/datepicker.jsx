@@ -27,7 +27,11 @@ class DatePicker extends Component {
     this.state = this.calcInitialState()
   }
 
-  calcInitialState() {
+  componentWillUnmount () {
+    this.clearPreventFocusTimeout()
+  }
+
+  calcInitialState () {
     const defaultPreSelection =
       this.props.openToDate ? moment(this.props.openToDate)
       : this.props.selectsEnd && this.props.startDate ? moment(this.props.startDate)
@@ -47,27 +51,23 @@ class DatePicker extends Component {
     }
   }
 
-  cancelFocusInput() {
+  cancelFocusInput () {
     clearTimeout(this.inputFocusTimeout)
     this.inputFocusTimeout = null
   }
 
-  clearPreventFocusTimeout() {
+  clearPreventFocusTimeout () {
     if (this.preventFocusTimeout) {
       clearTimeout(this.preventFocusTimeout)
     }
   }
 
-  componentWillUnmount() {
-    this.clearPreventFocusTimeout()
-  }
-
-  deferFocusInput() {
+  deferFocusInput () {
     this.cancelFocusInput()
-    this.inputFocusTimeout = window.setTimeout( _ => this.setFocus(), 1)
+    this.inputFocusTimeout = window.setTimeout(_ => this.setFocus(), 1)
   }
 
-  handleBlur(event) {
+  handleBlur (event) {
     if (this.state.open) {
       this.deferFocusInput()
     }
@@ -76,16 +76,16 @@ class DatePicker extends Component {
     }
   }
 
-  handleCalendarClickOutside(event) {
+  handleCalendarClickOutside (event) {
     this.setOpen(false)
     this.props.onClickOutside(event)
-    
+
     if (this.props.withPortal) {
       event.preventDefault()
     }
   }
 
-  handleChange(event) {
+  handleChange (event) {
     if (this.props.onChangeRaw) {
       this.props.onChangeRaw(event)
 
@@ -97,31 +97,31 @@ class DatePicker extends Component {
     this.setState({ inputValue: event.target.value })
 
     const date = parseDate(event.target.value, this.props)
-    
+
     if (date || !event.target.value) {
       this.setSelected(date, event, true)
     }
   }
 
-  handleDropdownFocus() {
+  handleDropdownFocus () {
     this.cancelFocusInput()
   }
 
-  handleFocus(event) {
+  handleFocus (event) {
     if (!this.state.preventFocus) {
       this.props.onFocus(event)
       this.setOpen(true)
     }
   }
 
-  handleSelect(date, event) {
+  handleSelect (date, event) {
     // Preventing onFocus event to fix issue
     // https://github.com/Hacker0x01/react-datepicker/issues/628
     this.setState({ preventFocus: true }, _ => {
       this.preventFocusTimeout = setTimeout(() => this.setState({ preventFocus: false }), 50)
       return this.preventFocusTimeout
     })
-    
+
     this.setSelected(date, event)
 
     if (this.props.selectMultiple !== true) {
@@ -129,18 +129,18 @@ class DatePicker extends Component {
     }
   }
 
-  onClearClick(event) {
+  onClearClick (event) {
     event.preventDefault()
     this.props.onChange(null, event)
   }
 
-  onInputClick() {
+  onInputClick () {
     if (!this.props.disabled) {
       this.setOpen(true)
     }
   }
 
-  onInputKeyDown(event) {
+  onInputKeyDown (event) {
     if (!this.state.open && !this.props.inline) {
       this.onInputClick()
       return
@@ -148,15 +148,15 @@ class DatePicker extends Component {
 
     const copy = moment(this.state.preSelection)
 
-    if ('Enter' === event.key) {
+    if (event.key === 'Enter') {
       event.preventDefault()
       this.handleSelect(copy, event)
     }
-    else if ('Escape' === event.key) {
+    else if (event.key === 'Escape') {
       event.preventDefault()
       this.setOpen(false)
     }
-    else if ('Tab' === event.key) {
+    else if (event.key === 'Tab') {
       this.setOpen(false)
     }
 
@@ -204,59 +204,17 @@ class DatePicker extends Component {
           newSelection = copy.subtract(1, 'months')
           break
       }
-      
+
       this.setPreSelection(newSelection)
     }
   }
 
-  render() {
-    const calendar = this.renderCalendar()
-
-    if (this.props.inline && !this.props.withPortal) {
-      return calendar
-    }
-
-    if (this.props.withPortal) {
-      return(
-        <div>
-          { !this.props.inline ?
-            <div className="react-datepicker__input-container">
-              {this.renderDateInput()}
-              {this.renderClearButton()}
-            </div>
-            : null }
-          
-          { this.state.open || this.props.inline ?
-            <div className="react-datepicker__portal">
-              {calendar}
-            </div>
-            : null }
-        </div>
-      )
-    }
-
-    return(
-      <TetherComponent attachment={this.props.popoverAttachment}
-        classPrefix={'react-datepicker__tether'}
-        constraints={this.props.tetherConstraints}
-        renderElementTo={this.props.renderCalendarTo}
-        targetAttachment={this.props.popoverTargetAttachment}
-        targetOffset={this.props.popoverTargetOffset}>
-        <div className="react-datepicker__input-container">
-          {this.renderDateInput()}
-          {this.renderClearButton()}
-        </div>
-        {calendar}
-      </TetherComponent>
-    )
-  }
-
-  renderCalendar() {
+  renderCalendar () {
     if (!this.props.inline && (!this.state.open || this.props.disabled)) {
       return null
     }
 
-    return(
+    return (
       <WrappedCalendar className={this.props.calendarClassName}
         dateFormat={this.props.dateFormatCalendar}
         dropdownMode={this.props.dropdownMode}
@@ -296,7 +254,7 @@ class DatePicker extends Component {
     )
   }
 
-  renderClearButton() {
+  renderClearButton () {
     if (this.props.isClearable && this.props.selected != null) {
       return <a className="react-datepicker__close-icon" href="#" onClick={this.onClearClick} />
     }
@@ -305,7 +263,7 @@ class DatePicker extends Component {
     }
   }
 
-  renderDateInput() {
+  renderDateInput () {
     const className = classnames(this.props.className, {
       [outsideClickIgnoreClass]: this.state.open
     })
@@ -338,18 +296,18 @@ class DatePicker extends Component {
     })
   }
 
-  setFocus() {
+  setFocus () {
     this.refs.input.focus()
   }
 
-  setOpen(open) {
+  setOpen (open) {
     this.setState({
       open: open,
       preSelection: open && this.state.open ? this.state.preSelection : this.calcInitialState().preSelection
     })
   }
 
-  setPreSelection(date) {
+  setPreSelection (date) {
     const isDateRangePresent = ((typeof this.props.minDate !== 'undefined') && (typeof this.props.maxDate !== 'undefined'))
     const isValidDateSelection = isDateRangePresent && date ? isDayInRange(date, this.props.minDate, this.props.maxDate) : true
 
@@ -358,7 +316,7 @@ class DatePicker extends Component {
     }
   }
 
-  setSelected(date, event, keepInput) {
+  setSelected (date, event, keepInput) {
     let changedDate = date
 
     if (changedDate !== null && isDayDisabled(changedDate, this.props)) {
@@ -386,6 +344,52 @@ class DatePicker extends Component {
     if (!keepInput) {
       this.setState({ inputValue: null })
     }
+  }
+
+  render () {
+    const calendar = this.renderCalendar()
+
+    if (this.props.inline && !this.props.withPortal) {
+      return calendar
+    }
+
+    if (this.props.withPortal) {
+      return (
+        <div>
+          {
+          !this.props.inline
+          ? <div className="react-datepicker__input-container">
+              {this.renderDateInput()}
+              {this.renderClearButton()}
+            </div>
+          : null
+          }
+
+          {
+          this.state.open || this.props.inline
+          ? <div className="react-datepicker__portal">
+              {calendar}
+            </div>
+          : null
+          }
+        </div>
+      )
+    }
+
+    return (
+      <TetherComponent attachment={this.props.popoverAttachment}
+        classPrefix={'react-datepicker__tether'}
+        constraints={this.props.tetherConstraints}
+        renderElementTo={this.props.renderCalendarTo}
+        targetAttachment={this.props.popoverTargetAttachment}
+        targetOffset={this.props.popoverTargetOffset}>
+        <div className="react-datepicker__input-container">
+          {this.renderDateInput()}
+          {this.renderClearButton()}
+        </div>
+        {calendar}
+      </TetherComponent>
+    )
   }
 }
 
@@ -421,8 +425,7 @@ DatePicker.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   customInput: PropTypes.element,
-  // eslint-disable-line react/no-unused-prop-types
-  dateFormat: PropTypes.oneOfType([
+  dateFormat: PropTypes.oneOfType([ // eslint-disable-line react/no-unused-prop-types
     PropTypes.string,
     PropTypes.array
   ]),

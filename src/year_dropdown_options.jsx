@@ -11,9 +11,9 @@ function generateYears (year, noOfYear) {
 }
 
 class YearDropdownOptions extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
-    
+
     this.state = {
       yearsList: this.props.scrollableYearDropdown ? generateYears(this.props.year, 10) : generateYears(this.props.year, 5)
     }
@@ -21,43 +21,30 @@ class YearDropdownOptions extends Component {
     this.onChange = this.onChange.bind(this)
   }
 
-  decrementYears() {
+  decrementYears () {
     return this.shiftYears(-1)
   }
 
-  handleClickOutside() {
+  handleClickOutside () {
     this.props.onCancel()
   }
 
-  incrementYears() {
+  incrementYears () {
     return this.shiftYears(1)
   }
 
-  onChange(year) {
+  onChange (year) {
     this.props.onChange(year)
   }
 
-  render() {
-    let dropdownClass = classNames({
-      'react-datepicker__year-dropdown': true,
-      'react-datepicker__year-dropdown--scrollable': this.props.scrollableYearDropdown
-    })
-
-    return(
-      <div className={dropdownClass}>
-        {this.renderOptions()}
-      </div>
-    )
-  }
-
-  renderOptions() {
+  renderOptions () {
     const selectedYear = this.props.year
-    
+
     let options = this.state.yearsList.map(year =>
       <div className="react-datepicker__year-option"
         key={year}
         ref={year}
-        onClick={ _ => this.onChange(year)}>
+        onClick={_ => this.onChange(year)}>
         {selectedYear === year ? <span className="react-datepicker__year-option--selected">✓</span> : ''}
         {year}
       </div>
@@ -84,9 +71,22 @@ class YearDropdownOptions extends Component {
     return options
   }
 
-  shiftYears(amount) {
-    const yearsList = this.state.yearsList.map( year => year + amount )
+  shiftYears (amount) {
+    const yearsList = this.state.yearsList.map(year => year + amount)
     this.setState({ yearsList })
+  }
+
+  render () {
+    let dropdownClass = classNames({
+      'react-datepicker__year-dropdown': true,
+      'react-datepicker__year-dropdown--scrollable': this.props.scrollableYearDropdown
+    })
+
+    return (
+      <div className={dropdownClass}>
+        {this.renderOptions()}
+      </div>
+    )
   }
 }
 

@@ -6,7 +6,7 @@ import Week from './week'
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6
 
 class Month extends Component {
-  getClassNames() {
+  getClassNames () {
     const {
       selectingDate,
       selectsStart,
@@ -18,39 +18,31 @@ class Month extends Component {
     })
   }
 
-  handleDayClick(day, event) {
+  handleDayClick (day, event) {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
   }
 
-  handleDayMouseEnter(day) {
+  handleDayMouseEnter (day) {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
   }
 
-  handleMouseLeave() {
+  handleMouseLeave () {
     if (this.props.onMouseLeave) {
       this.props.onMouseLeave()
     }
   }
 
-  isWeekInMonth(startOfWeek) {
+  isWeekInMonth (startOfWeek) {
     const day = this.props.day
     const endOfWeek = startOfWeek.clone().add(6, 'days')
     return startOfWeek.isSame(day, 'month') || endOfWeek.isSame(day, 'month')
   }
 
-  render() {
-    return(
-      <div className={this.getClassNames()} onMouseLeave={this.handleMouseLeave} role="listbox">
-        {this.renderWeeks()}
-      </div>
-    )
-  }
-
-  renderWeeks() {
+  renderWeeks () {
     const isFixedHeight = this.props.fixedHeight
 
     let breakAfterNextPush = false
@@ -102,6 +94,14 @@ class Month extends Component {
     }
 
     return weeks
+  }
+
+  render () {
+    return (
+      <div className={this.getClassNames()} onMouseLeave={this.handleMouseLeave} role="listbox">
+        {this.renderWeeks()}
+      </div>
+    )
   }
 }
 

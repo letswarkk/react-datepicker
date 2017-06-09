@@ -15,7 +15,8 @@ export default class Disabled extends React.Component {
   handleOnBlur = (date) => {
     if (date === null) {
       console.log('selected date: %s', date)
-    } else {
+    }
+    else {
       console.log('selected date: %s', date.format('DD/MM/YYYY'))
     }
   }
