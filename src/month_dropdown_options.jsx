@@ -5,7 +5,9 @@ class MonthDropdownOptions extends Component {
   constructor (props) {
     super(props)
 
+    this.handleClickOutside = this.handleClickOutside.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.renderOptions = this.renderOptions.bind(this)
   }
 
   handleClickOutside () {

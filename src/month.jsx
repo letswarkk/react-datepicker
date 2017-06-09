@@ -6,6 +6,17 @@ import Week from './week'
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6
 
 class Month extends Component {
+  constructor(props) {
+    super(props)
+
+    this.getClassNames = this.getClassNames.bind(this)
+    this.handleDayClick = this.handleDayClick.bind(this)
+    this.handleDayMouseEnter = this.handleDayMouseEnter.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.isWeekInMonth = this.isWeekInMonth.bind(this)
+    this.renderWeeks = this.renderWeeks.bind(this)
+  }
+
   getClassNames () {
     const {
       selectingDate,

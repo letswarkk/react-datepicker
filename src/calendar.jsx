@@ -31,6 +31,27 @@ class Calendar extends Component {
       date: this.localizeMoment(this.getDateInView()),
       selectingDate: null
     }
+
+    this.changeMonth = this.changeMonth.bind(this)
+    this.changeYear = this.changeYear.bind(this)
+    this.decreaseMonth = this.decreaseMonth.bind(this)
+    this.getDateInView = this.getDateInView.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.handleDayClick = this.handleDayClick.bind(this)
+    this.handleDayMouseEnter = this.handleDayMouseEnter.bind(this)
+    this.handleDropdownFocus = this.handleDropdownFocus.bind(this)
+    this.handleMonthChange = this.handleMonthChange.bind(this)
+    this.handleMonthMouseLeave = this.handleMonthMouseLeave.bind(this)
+    this.header = this.header.bind(this)
+    this.increaseMonth = this.increaseMonth.bind(this)
+    this.localizeMoment = this.localizeMoment.bind(this)
+    this.renderCurrentMonth = this.renderCurrentMonth.bind(this)
+    this.renderMonthDropdown = this.renderMonthDropdown.bind(this)
+    this.renderMonths = this.renderMonths.bind(this)
+    this.renderNextMonthButton = this.renderNextMonthButton.bind(this)
+    this.renderPreviousMonthButton = this.renderPreviousMonthButton.bind(this)
+    this.renderTodayButton = this.renderTodayButton.bind(this)
+    this.renderYearDropdown = this.renderYearDropdown.bind(this)
   }
 
   componentWillReceiveProps (nextProps) {

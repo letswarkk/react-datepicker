@@ -13,6 +13,14 @@ class MonthDropdown extends Component {
     this.state = {
       dropdownVisible: false
     }
+
+    this.onChange = this.onChange.bind(this)
+    this.renderDropdown = this.renderDropdown.bind(this)
+    this.renderReadView = this.renderReadView.bind(this)
+    this.renderScrollMode = this.renderScrollMode.bind(this)
+    this.renderSelectMode = this.renderSelectMode.bind(this)
+    this.renderSelectOptions = this.renderSelectOptions.bind(this)
+    this.toggleDropdown = this.toggleDropdown.bind(this)
   }
 
   onChange (month) {

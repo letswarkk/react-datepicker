@@ -9,6 +9,7 @@ class Week extends Component {
 
     this.handleDayClick = this.handleDayClick.bind(this)
     this.handleDayMouseEnter = this.handleDayMouseEnter.bind(this)
+    this.renderDays = this.renderDays.bind(this)
   }
 
   handleDayClick (day, event) {

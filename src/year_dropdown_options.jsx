@@ -18,7 +18,12 @@ class YearDropdownOptions extends Component {
       yearsList: this.props.scrollableYearDropdown ? generateYears(this.props.year, 10) : generateYears(this.props.year, 5)
     }
 
+    this.decrementYears = this.decrementYears.bind(this)
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.incrementYears = this.incrementYears.bind(this)
     this.onChange = this.onChange.bind(this)
+    this.renderOptions = this.renderOptions.bind(this)
+    this.shiftYears = this.shiftYears.bind(this)
   }
 
   decrementYears () {

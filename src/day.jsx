@@ -9,6 +9,26 @@ import {
 } from './date_utils'
 
 class Day extends Component {
+  constructor(props) {
+    super(props)
+
+    this.getClassNames = this.getClassNames.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.handleMouseEnter = this.handleMouseEnter.bind(this)
+    this.isDisabled = this.isDisabled.bind(this)
+    this.isHighlighted = this.isHighlighted.bind(this)
+    this.isInRange = this.isInRange.bind(this)
+    this.isInSelectingRange = this.isInSelectingRange.bind(this)
+    this.isKeyboardSelected = this.isKeyboardSelected.bind(this)
+    this.isOutsideMonth = this.isOutsideMonth.bind(this)
+    this.isRangeEnd = this.isRangeEnd.bind(this)
+    this.isRangeStart = this.isRangeStart.bind(this)
+    this.isSameDay = this.isSameDay.bind(this)
+    this.isSelectingRangeEnd = this.isSelectingRangeEnd.bind(this)
+    this.isSelectingRangeStart = this.isSelectingRangeStart.bind(this)
+    this.isWeekend = this.isWeekend.bind(this)
+  }
+
   getClassNames () {
     return classnames('react-datepicker__day', {
       'react-datepicker__day--disabled': this.isDisabled(),

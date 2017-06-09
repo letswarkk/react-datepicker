@@ -24,7 +24,29 @@ const WrappedCalendar = onClickOutside(Calendar)
 class DatePicker extends Component {
   constructor (props) {
     super(props)
+
     this.state = this.calcInitialState()
+
+    this.calcInitialState = this.calcInitialState.bind(this)
+    this.cancelFocusInput = this.cancelFocusInput.bind(this)
+    this.clearPreventFocusTimeout = this.clearPreventFocusTimeout.bind(this)
+    this.deferFocusInput = this.deferFocusInput.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
+    this.handleCalendarClickOutside = this.handleCalendarClickOutside.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleDropdownFocus = this.handleDropdownFocus.bind(this)
+    this.handleFocus = this.handleFocus.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+    this.onClearClick = this.onClearClick.bind(this)
+    this.onInputClick = this.onInputClick.bind(this)
+    this.onInputKeyDown = this.onInputKeyDown.bind(this)
+    this.renderCalendar = this.renderCalendar.bind(this)
+    this.renderClearButton = this.renderClearButton.bind(this)
+    this.renderDateInput = this.renderDateInput.bind(this)
+    this.setFocus = this.setFocus.bind(this)
+    this.setOpen = this.setOpen.bind(this)
+    this.setPreSelection = this.setPreSelection.bind(this)
+    this.setSelected = this.setSelected.bind(this)
   }
 
   componentWillUnmount () {
