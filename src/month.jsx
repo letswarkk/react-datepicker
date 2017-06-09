@@ -6,7 +6,7 @@ import Week from './week'
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6
 
 class Month extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.getClassNames = this.getClassNames.bind(this)

@@ -9,7 +9,7 @@ import {
 } from './date_utils'
 
 class Day extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.getClassNames = this.getClassNames.bind(this)

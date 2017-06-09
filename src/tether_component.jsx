@@ -27,7 +27,7 @@ const attachmentPositions = [
 ]
 
 class TetherComponent extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this._destroy = this._destroy.bind(this)
