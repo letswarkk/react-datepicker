@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import Tether from 'tether'
 
 function childrenPropType ({ children }, propName, componentName) {
   const childCount = React.Children.count(children)
+  
   if (childCount <= 0) {
     return new Error(`${componentName} expects at least one child to use as the target element.`)
-  } else if (childCount > 2) {
+  }
+  else if (childCount > 2) {
     return new Error(`Only a max of two children allowed in ${componentName}.`)
   }
 }
@@ -24,51 +26,8 @@ const attachmentPositions = [
   'bottom right'
 ]
 
-export default class TetherComponent extends React.Component {
-  static propTypes = {
-    attachment: PropTypes.oneOf(attachmentPositions).isRequired,
-    children: childrenPropType,
-    className: PropTypes.string,
-    classPrefix: PropTypes.string,
-    classes: PropTypes.object,
-    constraints: PropTypes.array,
-    enabled: PropTypes.bool,
-    id: PropTypes.string,
-    offset: PropTypes.string,
-    optimizations: PropTypes.object,
-    renderElementTag: PropTypes.string,
-    renderElementTo: PropTypes.any,
-    style: PropTypes.object,
-    targetAttachment: PropTypes.oneOf(attachmentPositions),
-    targetModifier: PropTypes.string,
-    targetOffset: PropTypes.string
-  }
-
-  static defaultProps = {
-    renderElementTag: 'div',
-    renderElementTo: null
-  }
-
-  componentDidMount () {
-    this._targetNode = ReactDOM.findDOMNode(this)
-    this._update()
-  }
-
-  componentDidUpdate () {
-    this._update()
-  }
-
-  componentWillUnmount () {
-    this._destroy()
-  }
-
-  disable = () => this._tether.disable()
-
-  enable = () => this._tether.enable()
-
-  position = () => this._tether.position()
-
-  _destroy = () => {
+class TetherComponent extends Component {
+  _destroy() {
     if (this._elementParentNode) {
       ReactDOM.unmountComponentAtNode(this._elementParentNode)
       this._elementParentNode.parentNode.removeChild(this._elementParentNode)
@@ -82,8 +41,13 @@ export default class TetherComponent extends React.Component {
     this._tether = null
   }
 
-  _update = () => {
-    const { children, renderElementTag, renderElementTo } = this.props
+  _update() {
+    const {
+      children,
+      renderElementTag,
+      renderElementTo
+    } = this.props
+
     let elementComponent = children[1]
 
     // if no element component provided, bail out
@@ -114,8 +78,13 @@ export default class TetherComponent extends React.Component {
     )
   }
 
-  _updateTether = () => {
-    const { renderElementTag, renderElementTo, ...options } = this.props // eslint-disable-line no-unused-vars
+  _updateTether() {
+    const {
+      renderElementTag,
+      renderElementTo,
+      ...options
+    } = this.props // eslint-disable-line no-unused-vars
+
     const tetherOptions = {
       target: this._targetNode,
       element: this._elementParentNode,
@@ -124,14 +93,40 @@ export default class TetherComponent extends React.Component {
 
     if (!this._tether) {
       this._tether = new Tether(tetherOptions)
-    } else {
+    }
+    else {
       this._tether.setOptions(tetherOptions)
     }
 
     this._tether.position()
   }
 
-  render () {
+  componentDidMount() {
+    this._targetNode = ReactDOM.findDOMNode(this)
+    this._update()
+  }
+
+  componentDidUpdate() {
+    this._update()
+  }
+
+  componentWillUnmount() {
+    this._destroy()
+  }
+
+  disable() {
+    return this._tether.disable()
+  }
+
+  enable() {
+    return this._tether.enable()
+  }
+
+  position() {
+    return this._tether.position()
+  }
+
+  render() {
     const { children } = this.props
     let firstChild = null
 
@@ -147,3 +142,29 @@ export default class TetherComponent extends React.Component {
     return firstChild
   }
 }
+
+TetherComponent.defaultProps = {
+  renderElementTag: 'div',
+  renderElementTo: null
+}
+
+TetherComponent.propTypes = {
+  attachment: PropTypes.oneOf(attachmentPositions).isRequired,
+  children: childrenPropType,
+  className: PropTypes.string,
+  classPrefix: PropTypes.string,
+  classes: PropTypes.object,
+  constraints: PropTypes.array,
+  enabled: PropTypes.bool,
+  id: PropTypes.string,
+  offset: PropTypes.string,
+  optimizations: PropTypes.object,
+  renderElementTag: PropTypes.string,
+  renderElementTo: PropTypes.any,
+  style: PropTypes.object,
+  targetAttachment: PropTypes.oneOf(attachmentPositions),
+  targetModifier: PropTypes.string,
+  targetOffset: PropTypes.string
+}
+
+export default TetherComponent

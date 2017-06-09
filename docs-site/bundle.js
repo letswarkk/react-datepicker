@@ -37522,6 +37522,7 @@
 	        popoverAttachment: 'top left',
 	        popoverTargetAttachment: 'bottom left',
 	        popoverTargetOffset: '10px 0',
+	        selectMultiple: false,
 	        tetherConstraints: [{
 	          to: 'window',
 	          attachment: 'together'
@@ -37631,7 +37632,10 @@
 	        return _this.preventFocusTimeout;
 	      });
 	      _this.setSelected(date, event);
-	      _this.setOpen(false);
+
+	      if (_this.props.selectMultiple !== true) {
+	        _this.setOpen(false);
+	      }
 	    };
 
 	    _this.setSelected = function (date, event, keepInput) {
@@ -37925,6 +37929,7 @@
 	  required: _propTypes2.default.bool,
 	  scrollableYearDropdown: _propTypes2.default.bool,
 	  selected: _propTypes2.default.object,
+	  selectMultiple: _propTypes2.default.bool,
 	  selectsEnd: _propTypes2.default.bool,
 	  selectsStart: _propTypes2.default.bool,
 	  showMonthDropdown: _propTypes2.default.bool,

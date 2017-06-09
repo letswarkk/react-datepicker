@@ -3,7 +3,8 @@ import moment from 'moment'
 export function isSameDay (moment1, moment2) {
   if (moment1 && moment2) {
     return moment1.isSame(moment2, 'day')
-  } else {
+  }
+  else {
     return !moment1 && !moment2
   }
 }
@@ -11,7 +12,8 @@ export function isSameDay (moment1, moment2) {
 export function isSameUtcOffset (moment1, moment2) {
   if (moment1 && moment2) {
     return moment1.utcOffset() === moment2.utcOffset()
-  } else {
+  }
+  else {
     return !moment1 && !moment2
   }
 }
@@ -48,9 +50,11 @@ export function allDaysDisabledAfter (day, unit, { maxDate, includeDates } = {})
 export function getEffectiveMinDate ({ minDate, includeDates }) {
   if (includeDates && minDate) {
     return moment.min(includeDates.filter(includeDate => minDate.isSameOrBefore(includeDate, 'day')))
-  } else if (includeDates) {
+  }
+  else if (includeDates) {
     return moment.min(includeDates)
-  } else {
+  }
+  else {
     return minDate
   }
 }
@@ -58,9 +62,11 @@ export function getEffectiveMinDate ({ minDate, includeDates }) {
 export function getEffectiveMaxDate ({ maxDate, includeDates }) {
   if (includeDates && maxDate) {
     return moment.max(includeDates.filter(includeDate => maxDate.isSameOrAfter(includeDate, 'day')))
-  } else if (includeDates) {
+  }
+  else if (includeDates) {
     return moment.max(includeDates)
-  } else {
+  }
+  else {
     return maxDate
   }
 }

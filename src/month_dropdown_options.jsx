@@ -1,35 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class MonthDropdownOptions extends React.Component {
-  static propTypes = {
-    onCancel: PropTypes.func.isRequired,
-    onChange: PropTypes.func.isRequired,
-    month: PropTypes.number.isRequired,
-    monthNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+class MonthDropdownOptions extends Component {
+  constructor(props) {
+    super(props)
+    
+    this.onChange = this.onChange.bind(this)
   }
 
-  renderOptions = () => {
-    return this.props.monthNames.map((month, i) =>
-      <div className="react-datepicker__month-option"
-          key={month}
-          ref={month}
-          onClick={this.onChange.bind(this, i)}>
-        {this.props.month === i ? <span className="react-datepicker__month-option--selected">✓</span> : ''}
-        {month}
-      </div>
-    )
+  handleClickOutside() {
+    return this.props.onCancel()
   }
 
-  onChange = (month) => this.props.onChange(month)
+  onChange(month) {
+    return this.props.onChange(month)
+  }
 
-  handleClickOutside = () => this.props.onCancel()
-
-  render () {
-    return (
+  render() {
+    return(
       <div className="react-datepicker__month-dropdown">
         {this.renderOptions()}
       </div>
     )
   }
+
+  renderOptions() {
+    return this.props.monthNames.map( (month, i) =>
+      <div className="react-datepicker__month-option"
+        key={month}
+        onClick={ _ => this.onChange(i) }
+        ref={month}>
+        {this.props.month === i ? <span className="react-datepicker__month-option--selected">✓</span> : ''}
+        {month}
+      </div>
+    )
+  }
 }
+
+MonthDropdownOptions.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  month: PropTypes.number.isRequired,
+  monthNames: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+}
+
+export default MonthDropdownOptions

@@ -236,6 +236,12 @@ type: `bool`
 type: `bool`
 
 
+### `selectMultiple`
+
+type: `bool`
+defaultValue: `false`
+
+
 ### `selected`
 
 type: `object`
