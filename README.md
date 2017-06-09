@@ -11,6 +11,10 @@ A simple and reusable Datepicker component for React ([Demo](https://hacker0x01.
 
 ![](https://cloud.githubusercontent.com/assets/1412392/5339491/c40de124-7ee1-11e4-9f07-9276e2545f27.png)
 
+## Fork
+
+This fork will add support for multiple dates selection.
+
 ## Installation
 
 The package can be installed via NPM:
@@ -129,4 +133,4 @@ The examples are hosted within the docs folder and are ran in the simple add tha
 
 ## License
 
-Copyright (c) 2016 HackerOne Inc. and individual contributors. Licensed under MIT license, see [LICENSE](LICENSE) for the full license.
+Copyright (c) 2017 HackerOne Inc. and individual contributors. Licensed under MIT license, see [LICENSE](LICENSE) for the full license.
