@@ -24,6 +24,7 @@ class Day extends Component {
     this.isRangeEnd = this.isRangeEnd.bind(this)
     this.isRangeStart = this.isRangeStart.bind(this)
     this.isSameDay = this.isSameDay.bind(this)
+    this.isSelectedSameDay = this.isSelectedSameDay.bind(this)
     this.isSelectingRangeEnd = this.isSelectingRangeEnd.bind(this)
     this.isSelectingRangeStart = this.isSelectingRangeStart.bind(this)
     this.isWeekend = this.isWeekend.bind(this)
@@ -32,7 +33,7 @@ class Day extends Component {
   getClassNames () {
     return classnames('react-datepicker__day', {
       'react-datepicker__day--disabled': this.isDisabled(),
-      'react-datepicker__day--selected': this.isSameDay(this.props.selected),
+      'react-datepicker__day--selected': this.isSelectedSameDay(),
       'react-datepicker__day--keyboard-selected': this.isKeyboardSelected(),
       'react-datepicker__day--highlighted': this.isHighlighted(),
       'react-datepicker__day--range-start': this.isRangeStart(),
@@ -116,7 +117,7 @@ class Day extends Component {
   }
 
   isKeyboardSelected () {
-    return !this.props.inline && !this.isSameDay(this.props.selected) && this.isSameDay(this.props.preSelection)
+    return !this.props.inline && !this.isSelectedSameDay() && this.isSameDay(this.props.preSelection)
   }
 
   isOutsideMonth () {
@@ -153,6 +154,19 @@ class Day extends Component {
 
   isSameDay (other) {
     return isSameDay(this.props.day, other)
+  }
+
+  isSelectedSameDay () {
+    if (Array.isArray(this.props.selected)) {
+      for (let i = 0; i < this.props.selected.length; i++) {
+        if (this.isSameDay(this.props.selected[i])) {
+          return true
+        }
+      }
+    }
+    else {
+      return this.isSameDay(this.props.selected)
+    }
   }
 
   isSelectingRangeEnd () {
@@ -216,7 +230,10 @@ Day.propTypes = {
   onClick: PropTypes.func,
   onMouseEnter: PropTypes.func,
   preSelection: PropTypes.object,
-  selected: PropTypes.object,
+  selected: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   selectingDate: PropTypes.object,
   selectsEnd: PropTypes.bool,
   selectsStart: PropTypes.bool,

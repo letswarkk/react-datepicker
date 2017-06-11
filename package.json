@@ -1,10 +1,10 @@
 {
-  "author": "HackerOne",
-  "name": "react-datepicker",
+  "author": "Lubos",
+  "name": "react-datepicker-multiple-lmenus",
   "description": "A simple and reusable datepicker component for React",
   "version": "0.47.0",
   "license": "MIT",
-  "homepage": "https://github.com/Hacker0x01/react-datepicker",
+  "homepage": "https://github.com/lmenus/react-datepicker",
   "main": "dist/react-datepicker.min.js",
   "style": "dist/react-datepicker.min.css",
   "files": [
@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/Hacker0x01/react-datepicker.git"
+    "url": "git://github.com/lmenus/react-datepicker.git"
   },
   "bugs": {
-    "url": "https://github.com/Hacker0x01/react-datepicker/issues"
+    "url": "https://github.com/lmenus/react-datepicker/issues"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
@@ -103,7 +103,7 @@
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test grunt travis",
     "eslint": "eslint **/*.jsx",
-    "prepublish": "npm run build",
+    "prepare": "yarn build",
     "codecov": "cat coverage/*/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js"
   }
 }

@@ -11,11 +11,7 @@ export default class Root extends React.Component {
             <h1 className="hero__title">
               ReactJS Datepicker
             </h1>
-            <div className="hero__crafted-by">
-              <a href="https://hackerone.com" className="hero__crafted-by-link">
-                Crafted by <img src="images/logo.png" className="hero__image" alt="HackerOne" title="HackerOne" />
-              </a>
-            </div>
+            <div className="hero__crafted-by">Lubos</div>
             <div className="hero__example">
               <HeroExample />
             </div>

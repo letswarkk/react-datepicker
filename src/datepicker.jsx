@@ -29,6 +29,7 @@ class DatePicker extends Component {
 
     this.calcInitialState = this.calcInitialState.bind(this)
     this.cancelFocusInput = this.cancelFocusInput.bind(this)
+    this.changeSelectedValues = this.changeSelectedValues.bind(this)
     this.clearPreventFocusTimeout = this.clearPreventFocusTimeout.bind(this)
     this.deferFocusInput = this.deferFocusInput.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
@@ -66,9 +67,15 @@ class DatePicker extends Component {
       : maxDate && defaultPreSelection.isAfter(maxDate) ? maxDate
       : defaultPreSelection
 
+    // Set the date to midnight so we can compare them exactly by days.
+    let preSelection = this.props.selected ? Array.isArray(this.props.selected) ? this.props.selected[0] : moment(this.props.selected) : boundedPreSelection
+    if (preSelection) {
+      preSelection = preSelection.startOf('day')
+    }
+
     return {
       open: false,
-      preSelection: this.props.selected ? moment(this.props.selected) : boundedPreSelection,
+      preSelection,
       preventFocus: false
     }
   }
@@ -76,6 +83,49 @@ class DatePicker extends Component {
   cancelFocusInput () {
     clearTimeout(this.inputFocusTimeout)
     this.inputFocusTimeout = null
+  }
+
+  changeSelectedValues (newDate) {
+    let selected = this.props.selected || []
+    let spliceIndex = -1
+    let isIncluded = false
+
+    if (this.props.selectMultiple === true) {
+      for (let i = 0; i < selected.length; i++) {
+        const date = selected[i]
+        const diff = newDate.diff(date, 'days')
+
+        if (spliceIndex === -1) {
+          if (diff < 0) {
+            spliceIndex = i
+            break
+          }
+        }
+
+        if (diff === 0) {
+          spliceIndex = i
+          isIncluded = true
+          break
+        }
+      }
+
+      if (!isIncluded) {
+        if (spliceIndex === -1) {
+          selected.push(newDate)
+        }
+        else {
+          selected.splice(spliceIndex, 0, newDate)
+        }
+      }
+      else {
+        selected.splice(spliceIndex, 1)
+      }
+    }
+    else {
+      selected = newDate
+    }
+
+    this.setState({ selected, preSelection: newDate })
   }
 
   clearPreventFocusTimeout () {
@@ -140,7 +190,7 @@ class DatePicker extends Component {
     // Preventing onFocus event to fix issue
     // https://github.com/Hacker0x01/react-datepicker/issues/628
     this.setState({ preventFocus: true }, _ => {
-      this.preventFocusTimeout = setTimeout(() => this.setState({ preventFocus: false }), 50)
+      this.preventFocusTimeout = setTimeout(_ => this.setState({ preventFocus: false }), 50)
       return this.preventFocusTimeout
     })
 
@@ -153,7 +203,7 @@ class DatePicker extends Component {
 
   onClearClick (event) {
     event.preventDefault()
-    this.props.onChange(null, event)
+    this.props.onChange(null, event, [])
   }
 
   onInputClick () {
@@ -291,10 +341,13 @@ class DatePicker extends Component {
     })
 
     const customInput = this.props.customInput || <input type="text" />
+
     const inputValue =
       typeof this.props.value === 'string' ? this.props.value
         : typeof this.state.inputValue === 'string' ? this.state.inputValue
-        : safeDateFormat(this.props.selected, this.props)
+        : !Array.isArray(this.props.selected) ? safeDateFormat(this.props.selected, this.props)
+        : !this.props.selectMultiple ? safeDateFormat(this.props.selected[0], this.props)
+        : `${this.props.selected.length} date${this.props.selected.length !== 1 ? 's' : ''} selected`
 
     return React.cloneElement(customInput, {
       autoComplete: this.props.autoComplete,
@@ -308,13 +361,13 @@ class DatePicker extends Component {
       onClick: this.onInputClick,
       onFocus: this.handleFocus,
       onKeyDown: this.onInputKeyDown,
-      placeholder: this.props.placeholderText,
+      placeholder: this.props.placeholderText || (Array.isArray(this.props.selected) && this.props.selectMultiple === true ? inputValue : ''),
       readOnly: this.props.readOnly,
       ref: 'input',
       required: this.props.required,
       tabIndex: this.props.tabIndex,
       title: this.props.title,
-      value: inputValue
+      value: this.props.selectMultiple === true ? '' : inputValue
     })
   }
 
@@ -323,10 +376,13 @@ class DatePicker extends Component {
   }
 
   setOpen (open) {
-    this.setState({
-      open: open,
-      preSelection: open && this.state.open ? this.state.preSelection : this.calcInitialState().preSelection
-    })
+    let preSelection = this.state.preSelection
+
+    if (!preSelection) {
+      preSelection = open && this.state.open ? moment() : this.calcInitialState().preSelection
+    }
+
+    this.setState({ open, preSelection })
   }
 
   setPreSelection (date) {
@@ -345,9 +401,11 @@ class DatePicker extends Component {
       return
     }
 
-    if (!isSameDay(this.props.selected, changedDate)) {
+    changedDate = changedDate.startOf('date')
+
+    if (Array.isArray(this.props.selected) || !isSameDay(this.props.selected, changedDate)) {
       if (changedDate !== null) {
-        if (this.props.selected) {
+        if (!Array.isArray(this.props.selected) && this.props.selected) {
           changedDate = moment(changedDate).set({
             hour: this.props.selected.hour(),
             minute: this.props.selected.minute(),
@@ -355,10 +413,10 @@ class DatePicker extends Component {
           })
         }
 
-        this.setState({ preSelection: changedDate })
+        this.changeSelectedValues(changedDate)
       }
 
-      this.props.onChange(changedDate, event)
+      this.props.onChange(changedDate, event, this.state.selected)
     }
 
     this.props.onSelect(changedDate, event)
@@ -459,6 +517,7 @@ DatePicker.propTypes = {
   excludeDates: PropTypes.array,
   filterDate: PropTypes.func,
   fixedHeight: PropTypes.bool,
+  forceShowMonthNavigation: PropTypes.bool,
   highlightDates: PropTypes.array,
   id: PropTypes.string,
   includeDates: PropTypes.array,
@@ -471,11 +530,11 @@ DatePicker.propTypes = {
   name: PropTypes.string,
   onBlur: PropTypes.func,
   onChange: PropTypes.func.isRequired,
-  onSelect: PropTypes.func,
-  onClickOutside: PropTypes.func,
   onChangeRaw: PropTypes.func,
+  onClickOutside: PropTypes.func,
   onFocus: PropTypes.func,
   onMonthChange: PropTypes.func,
+  onSelect: PropTypes.func,
   openToDate: PropTypes.object,
   peekNextMonth: PropTypes.bool,
   placeholderText: PropTypes.string,
@@ -486,14 +545,16 @@ DatePicker.propTypes = {
   renderCalendarTo: PropTypes.any,
   required: PropTypes.bool,
   scrollableYearDropdown: PropTypes.bool,
-  selected: PropTypes.object,
+  selected: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   selectMultiple: PropTypes.bool,
   selectsEnd: PropTypes.bool,
   selectsStart: PropTypes.bool,
   showMonthDropdown: PropTypes.bool,
   showWeekNumbers: PropTypes.bool,
   showYearDropdown: PropTypes.bool,
-  forceShowMonthNavigation: PropTypes.bool,
   startDate: PropTypes.object,
   tabIndex: PropTypes.number,
   tetherConstraints: PropTypes.array,

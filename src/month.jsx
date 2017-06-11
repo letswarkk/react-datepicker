@@ -132,7 +132,10 @@ Month.propTypes = {
   onMouseLeave: PropTypes.func,
   peekNextMonth: PropTypes.bool,
   preSelection: PropTypes.object,
-  selected: PropTypes.object,
+  selected: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   selectingDate: PropTypes.object,
   selectsEnd: PropTypes.bool,
   selectsStart: PropTypes.bool,

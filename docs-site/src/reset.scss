@@ -114,16 +114,26 @@ blockquote {
   quotes: none;
 }
 
-q:before,
-q:after,
-blockquote:before,
-blockquote:after {
-  content: "";
-  content: none;
+q {
+  &:before,
+  &:after {
+    content: "";
+    content: none; // sass-lint:disable-line no-duplicate-properties
+  }
 }
 
-a img {
-  border: none;
+blockquote {
+  &:before,
+  &:after {
+    content: "";
+    content: none; // sass-lint:disable-line no-duplicate-properties
+  }
+}
+
+a {
+  img {
+    border: none;
+  }
 }
 
 article,

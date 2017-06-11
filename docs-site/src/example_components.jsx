@@ -6,6 +6,7 @@ import CodeExampleComponent from './code_example_component'
 import CustomDateFormat from './examples/custom_date_format'
 import CustomClassName from './examples/custom_class_name'
 import CustomCalendarClassName from './examples/custom_calendar_class_name'
+import MultipleDates from './examples/multiple_dates'
 import PlaceholderText from './examples/placeholder_text'
 import SpecificDateRange from './examples/specific_date_range'
 import Locale from './examples/locale'
@@ -48,6 +49,10 @@ export default class exampleComponents extends React.Component {
   examples = [{
     title: 'Default',
     component: <Default />
+  },
+  {
+    title: 'Mutliple dates',
+    component: <MultipleDates />
   },
   {
     title: 'Custom date format',

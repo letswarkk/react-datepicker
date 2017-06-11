@@ -85,7 +85,7 @@ class Calendar extends Component {
     const minDate = getEffectiveMinDate(this.props)
     const maxDate = getEffectiveMaxDate(this.props)
     const current = moment.utc().utcOffset(utcOffset)
-    const initialDate = preSelection || selected
+    let initialDate = preSelection || (Array.isArray(selected) ? selected[0] : selected)
 
     if (initialDate) {
       return initialDate
@@ -345,7 +345,10 @@ Calendar.propTypes = {
   peekNextMonth: PropTypes.bool,
   scrollableYearDropdown: PropTypes.bool,
   preSelection: PropTypes.object,
-  selected: PropTypes.object,
+  selected: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   selectsEnd: PropTypes.bool,
   selectsStart: PropTypes.bool,
   showMonthDropdown: PropTypes.bool,
