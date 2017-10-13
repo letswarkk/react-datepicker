@@ -6,7 +6,7 @@ import onClickOutside from 'react-onclickoutside'
 const WrappedYearDropdownOptions = onClickOutside(YearDropdownOptions)
 
 class YearDropdown extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -23,17 +23,17 @@ class YearDropdown extends Component {
     this.toggleDropdown = this.toggleDropdown.bind(this)
   }
 
-  onChange (year) {
+  onChange(year) {
     this.toggleDropdown()
     if (year === this.props.year) return
     this.props.onChange(year)
   }
 
-  onSelectChange (event) {
+  onSelectChange(event) {
     this.onChange(event.target.value)
   }
 
-  renderDropdown () {
+  renderDropdown() {
     return (
       <WrappedYearDropdownOptions key="dropdown"
         onCancel={this.toggleDropdown}
@@ -44,7 +44,7 @@ class YearDropdown extends Component {
     )
   }
 
-  renderReadView (visible) {
+  renderReadView(visible) {
     return (
       <div key="read" style={{visibility: visible ? 'visible' : 'hidden'}} className="react-datepicker__year-read-view" onClick={this.toggleDropdown}>
         <span className="react-datepicker__year-read-view--down-arrow" />
@@ -53,7 +53,7 @@ class YearDropdown extends Component {
     )
   }
 
-  renderScrollMode () {
+  renderScrollMode() {
     const { dropdownVisible } = this.state
     let result = [this.renderReadView(!dropdownVisible)]
     if (dropdownVisible) {
@@ -62,9 +62,10 @@ class YearDropdown extends Component {
     return result
   }
 
-  renderSelectMode () {
+  renderSelectMode() {
     return (
-      <select className="react-datepicker__year-select"
+      <select
+        className="react-datepicker__year-select"
         onChange={this.onSelectChange}
         value={this.props.year}>
         {this.renderSelectOptions()}
@@ -72,9 +73,14 @@ class YearDropdown extends Component {
     )
   }
 
-  renderSelectOptions () {
-    const minYear = this.props.minDate ? this.props.minDate.year() : 1900
-    const maxYear = this.props.maxDate ? this.props.maxDate.year() : 2100
+  renderSelectOptions() {
+    const minYear = this.props.minDate && !this.props.canUnselectOutOfRangeDates
+      ? this.props.minDate.year()
+      : 1900
+
+    const maxYear = this.props.maxDate && !this.props.canUnselectOutOfRangeDates
+      ? this.props.maxDate.year()
+      : 2100
 
     let options = []
     for (let i = minYear; i <= maxYear; i++) {
@@ -83,11 +89,11 @@ class YearDropdown extends Component {
     return options
   }
 
-  toggleDropdown () {
+  toggleDropdown() {
     this.setState({ dropdownVisible: !this.state.dropdownVisible })
   }
 
-  render () {
+  render() {
     let renderedDropdown
 
     switch (this.props.dropdownMode) {
@@ -101,7 +107,8 @@ class YearDropdown extends Component {
     }
 
     return (
-      <div className={`react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--${this.props.dropdownMode}`}>
+      <div className={`react-datepicker__year-dropdown-container
+        react-datepicker__year-dropdown-container--${this.props.dropdownMode}`}>
         {renderedDropdown}
       </div>
     )
@@ -109,6 +116,7 @@ class YearDropdown extends Component {
 }
 
 YearDropdown.propTypes = {
+  canUnselectOutOfRangeDates: PropTypes.bool,
   dropdownMode: PropTypes.oneOf(['scroll', 'select']).isRequired,
   maxDate: PropTypes.object,
   minDate: PropTypes.object,

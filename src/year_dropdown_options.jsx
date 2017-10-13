@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-function generateYears (year, noOfYear) {
+const generateYears = (year, noOfYear) => {
   let list = []
   for (let i = 0; i < (2 * noOfYear); i++) {
     list.push(year + noOfYear - i)
@@ -11,7 +11,7 @@ function generateYears (year, noOfYear) {
 }
 
 class YearDropdownOptions extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -26,30 +26,30 @@ class YearDropdownOptions extends Component {
     this.shiftYears = this.shiftYears.bind(this)
   }
 
-  decrementYears () {
+  decrementYears() {
     return this.shiftYears(-1)
   }
 
-  handleClickOutside () {
+  handleClickOutside() {
     this.props.onCancel()
   }
 
-  incrementYears () {
+  incrementYears() {
     return this.shiftYears(1)
   }
 
-  onChange (year) {
+  onChange(year) {
     this.props.onChange(year)
   }
 
-  renderOptions () {
+  renderOptions() {
     const selectedYear = this.props.year
 
     let options = this.state.yearsList.map(year =>
       <div className="react-datepicker__year-option"
         key={year}
         ref={year}
-        onClick={_ => this.onChange(year)}>
+        onClick={() => this.onChange(year)}>
         {selectedYear === year ? <span className="react-datepicker__year-option--selected">✓</span> : ''}
         {year}
       </div>
@@ -76,12 +76,12 @@ class YearDropdownOptions extends Component {
     return options
   }
 
-  shiftYears (amount) {
+  shiftYears(amount) {
     const yearsList = this.state.yearsList.map(year => year + amount)
     this.setState({ yearsList })
   }
 
-  render () {
+  render() {
     let dropdownClass = classNames({
       'react-datepicker__year-dropdown': true,
       'react-datepicker__year-dropdown--scrollable': this.props.scrollableYearDropdown

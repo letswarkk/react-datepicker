@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class MonthDropdownOptions extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleClickOutside = this.handleClickOutside.bind(this)
@@ -10,19 +10,19 @@ class MonthDropdownOptions extends Component {
     this.renderOptions = this.renderOptions.bind(this)
   }
 
-  handleClickOutside () {
+  handleClickOutside() {
     return this.props.onCancel()
   }
 
-  onChange (month) {
+  onChange(month) {
     return this.props.onChange(month)
   }
 
-  renderOptions () {
+  renderOptions() {
     return this.props.monthNames.map((month, i) =>
       <div className="react-datepicker__month-option"
         key={month}
-        onClick={_ => this.onChange(i)}
+        onClick={() => this.onChange(i)}
         ref={month}>
         {this.props.month === i ? <span className="react-datepicker__month-option--selected">✓</span> : ''}
         {month}
@@ -30,7 +30,7 @@ class MonthDropdownOptions extends Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <div className="react-datepicker__month-dropdown">
         {this.renderOptions()}

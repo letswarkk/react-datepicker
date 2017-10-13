@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import Tether from 'tether'
 
-function childrenPropType ({ children }, propName, componentName) {
+const childrenPropType = ({ children }, propName, componentName) => {
   const childCount = React.Children.count(children)
 
   if (childCount <= 0) {
@@ -27,7 +27,7 @@ const attachmentPositions = [
 ]
 
 class TetherComponent extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this._destroy = this._destroy.bind(this)
@@ -38,20 +38,20 @@ class TetherComponent extends Component {
     this.position = this.position.bind(this)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this._targetNode = ReactDOM.findDOMNode(this)
     this._update()
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this._update()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._destroy()
   }
 
-  _destroy () {
+  _destroy() {
     if (this._elementParentNode) {
       ReactDOM.unmountComponentAtNode(this._elementParentNode)
       this._elementParentNode.parentNode.removeChild(this._elementParentNode)
@@ -65,7 +65,7 @@ class TetherComponent extends Component {
     this._tether = null
   }
 
-  _update () {
+  _update() {
     const {
       children,
       renderElementTag,
@@ -102,7 +102,7 @@ class TetherComponent extends Component {
     )
   }
 
-  _updateTether () {
+  _updateTether() {
     const {
       renderElementTag, // eslint-disable-line no-unused-vars
       renderElementTo, // eslint-disable-line no-unused-vars
@@ -125,19 +125,19 @@ class TetherComponent extends Component {
     this._tether.position()
   }
 
-  disable () {
+  disable() {
     return this._tether.disable()
   }
 
-  enable () {
+  enable() {
     return this._tether.enable()
   }
 
-  position () {
+  position() {
     return this._tether.position()
   }
 
-  render () {
+  render() {
     const { children } = this.props
     let firstChild = null
 

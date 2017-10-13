@@ -502,7 +502,7 @@
 
 /***/ }),
 /* 6 */
-[522, 7],
+[523, 7],
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -5689,7 +5689,7 @@
 
 /***/ }),
 /* 50 */
-[522, 35],
+[523, 35],
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20095,7 +20095,7 @@
 
 	var _example_components2 = _interopRequireDefault(_example_components);
 
-	var _hero_example = __webpack_require__(521);
+	var _hero_example = __webpack_require__(522);
 
 	var _hero_example2 = _interopRequireDefault(_hero_example);
 
@@ -20273,121 +20273,125 @@
 
 	var _specific_date_range2 = _interopRequireDefault(_specific_date_range);
 
-	var _locale = __webpack_require__(491);
+	var _specific_date_range_can_unselect = __webpack_require__(491);
+
+	var _specific_date_range_can_unselect2 = _interopRequireDefault(_specific_date_range_can_unselect);
+
+	var _locale = __webpack_require__(492);
 
 	var _locale2 = _interopRequireDefault(_locale);
 
-	var _exclude_dates = __webpack_require__(492);
+	var _exclude_dates = __webpack_require__(493);
 
 	var _exclude_dates2 = _interopRequireDefault(_exclude_dates);
 
-	var _highlight_dates = __webpack_require__(493);
+	var _highlight_dates = __webpack_require__(494);
 
 	var _highlight_dates2 = _interopRequireDefault(_highlight_dates);
 
-	var _include_dates = __webpack_require__(494);
+	var _include_dates = __webpack_require__(495);
 
 	var _include_dates2 = _interopRequireDefault(_include_dates);
 
-	var _filter_dates = __webpack_require__(495);
+	var _filter_dates = __webpack_require__(496);
 
 	var _filter_dates2 = _interopRequireDefault(_filter_dates);
 
-	var _disabled = __webpack_require__(496);
+	var _disabled = __webpack_require__(497);
 
 	var _disabled2 = _interopRequireDefault(_disabled);
 
-	var _disabled_keyboard_navigation = __webpack_require__(497);
+	var _disabled_keyboard_navigation = __webpack_require__(498);
 
 	var _disabled_keyboard_navigation2 = _interopRequireDefault(_disabled_keyboard_navigation);
 
-	var _clear_input = __webpack_require__(498);
+	var _clear_input = __webpack_require__(499);
 
 	var _clear_input2 = _interopRequireDefault(_clear_input);
 
-	var _on_blur_callbacks = __webpack_require__(499);
+	var _on_blur_callbacks = __webpack_require__(500);
 
 	var _on_blur_callbacks2 = _interopRequireDefault(_on_blur_callbacks);
 
-	var _placement = __webpack_require__(500);
+	var _placement = __webpack_require__(501);
 
 	var _placement2 = _interopRequireDefault(_placement);
 
-	var _date_range = __webpack_require__(501);
+	var _date_range = __webpack_require__(502);
 
 	var _date_range2 = _interopRequireDefault(_date_range);
 
-	var _tab_index = __webpack_require__(502);
+	var _tab_index = __webpack_require__(503);
 
 	var _tab_index2 = _interopRequireDefault(_tab_index);
 
-	var _year_dropdown = __webpack_require__(503);
+	var _year_dropdown = __webpack_require__(504);
 
 	var _year_dropdown2 = _interopRequireDefault(_year_dropdown);
 
-	var _month_dropdown = __webpack_require__(504);
+	var _month_dropdown = __webpack_require__(505);
 
 	var _month_dropdown2 = _interopRequireDefault(_month_dropdown);
 
-	var _year_select_dropdown = __webpack_require__(505);
+	var _year_select_dropdown = __webpack_require__(506);
 
 	var _year_select_dropdown2 = _interopRequireDefault(_year_select_dropdown);
 
-	var _today = __webpack_require__(506);
+	var _today = __webpack_require__(507);
 
 	var _today2 = _interopRequireDefault(_today);
 
-	var _timezone_date = __webpack_require__(507);
+	var _timezone_date = __webpack_require__(508);
 
 	var _timezone_date2 = _interopRequireDefault(_timezone_date);
 
-	var _inline = __webpack_require__(508);
+	var _inline = __webpack_require__(509);
 
 	var _inline2 = _interopRequireDefault(_inline);
 
-	var _open_to_date = __webpack_require__(509);
+	var _open_to_date = __webpack_require__(510);
 
 	var _open_to_date2 = _interopRequireDefault(_open_to_date);
 
-	var _fixed_calendar = __webpack_require__(510);
+	var _fixed_calendar = __webpack_require__(511);
 
 	var _fixed_calendar2 = _interopRequireDefault(_fixed_calendar);
 
-	var _week_numbers = __webpack_require__(511);
+	var _week_numbers = __webpack_require__(512);
 
 	var _week_numbers2 = _interopRequireDefault(_week_numbers);
 
-	var _custom_input = __webpack_require__(512);
+	var _custom_input = __webpack_require__(513);
 
 	var _custom_input2 = _interopRequireDefault(_custom_input);
 
-	var _multi_month = __webpack_require__(513);
+	var _multi_month = __webpack_require__(514);
 
 	var _multi_month2 = _interopRequireDefault(_multi_month);
 
-	var _multi_month_drp = __webpack_require__(514);
+	var _multi_month_drp = __webpack_require__(515);
 
 	var _multi_month_drp2 = _interopRequireDefault(_multi_month_drp);
 
-	var _children = __webpack_require__(515);
+	var _children = __webpack_require__(516);
 
 	var _children2 = _interopRequireDefault(_children);
 
-	var _portal = __webpack_require__(516);
+	var _portal = __webpack_require__(517);
 
 	var _portal2 = _interopRequireDefault(_portal);
 
-	var _inline_portal = __webpack_require__(517);
+	var _inline_portal = __webpack_require__(518);
 
 	var _inline_portal2 = _interopRequireDefault(_inline_portal);
 
-	var _raw_change = __webpack_require__(518);
+	var _raw_change = __webpack_require__(519);
 
 	var _raw_change2 = _interopRequireDefault(_raw_change);
 
-	__webpack_require__(519);
-
 	__webpack_require__(520);
+
+	__webpack_require__(521);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20438,6 +20442,9 @@
 	    }, {
 	      title: 'Specific date range',
 	      component: _react2.default.createElement(_specific_date_range2.default, null)
+	    }, {
+	      title: 'Specific date range (allow unselecting expired dates)',
+	      component: _react2.default.createElement(_specific_date_range_can_unselect2.default, null)
 	    }, {
 	      title: 'Locale',
 	      component: _react2.default.createElement(_locale2.default, null)
@@ -37620,7 +37627,7 @@
 	      var _this2 = this;
 
 	      this.cancelFocusInput();
-	      this.inputFocusTimeout = window.setTimeout(function (_) {
+	      this.inputFocusTimeout = window.setTimeout(function () {
 	        return _this2.setFocus();
 	      }, 1);
 	    }
@@ -37682,8 +37689,8 @@
 
 	      // Preventing onFocus event to fix issue
 	      // https://github.com/Hacker0x01/react-datepicker/issues/628
-	      this.setState({ preventFocus: true }, function (_) {
-	        _this3.preventFocusTimeout = setTimeout(function (_) {
+	      this.setState({ preventFocus: true }, function () {
+	        _this3.preventFocusTimeout = setTimeout(function () {
 	          return _this3.setState({ preventFocus: false });
 	        }, 50);
 	        return _this3.preventFocusTimeout;
@@ -37785,7 +37792,9 @@
 
 	      return _react2.default.createElement(
 	        WrappedCalendar,
-	        { className: this.props.calendarClassName,
+	        {
+	          canUnselectOutOfRangeDates: this.props.canUnselectOutOfRangeDates,
+	          className: this.props.calendarClassName,
 	          dateFormat: this.props.dateFormatCalendar,
 	          dropdownMode: this.props.dropdownMode,
 	          endDate: this.props.endDate,
@@ -37949,7 +37958,8 @@
 
 	      return _react2.default.createElement(
 	        _tether_component2.default,
-	        { attachment: this.props.popoverAttachment,
+	        {
+	          attachment: this.props.popoverAttachment,
 	          classPrefix: 'react-datepicker__tether',
 	          constraints: this.props.tetherConstraints,
 	          renderElementTo: this.props.renderCalendarTo,
@@ -37970,18 +37980,19 @@
 	}(_react.Component);
 
 	DatePicker.defaultProps = {
+	  canUnselectOutOfRangeDates: false,
 	  dateFormat: 'L',
 	  dateFormatCalendar: 'MMMM YYYY',
 	  disabled: false,
 	  disabledKeyboardNavigation: false,
 	  dropdownMode: 'scroll',
 	  monthsShown: 1,
-	  onBlur: function onBlur(_) {},
-	  onChange: function onChange(_) {},
-	  onFocus: function onFocus(_) {},
-	  onSelect: function onSelect(_) {},
-	  onClickOutside: function onClickOutside(_) {},
-	  onMonthChange: function onMonthChange(_) {},
+	  onBlur: function onBlur() {},
+	  onChange: function onChange() {},
+	  onFocus: function onFocus() {},
+	  onSelect: function onSelect() {},
+	  onClickOutside: function onClickOutside() {},
+	  onMonthChange: function onMonthChange() {},
 	  popoverAttachment: 'top left',
 	  popoverTargetAttachment: 'bottom left',
 	  popoverTargetOffset: '10px 0',
@@ -37998,6 +38009,7 @@
 	  autoComplete: _propTypes2.default.string,
 	  autoFocus: _propTypes2.default.bool,
 	  calendarClassName: _propTypes2.default.string,
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool,
 	  children: _propTypes2.default.node,
 	  className: _propTypes2.default.string,
 	  customInput: _propTypes2.default.element,
@@ -38169,7 +38181,7 @@
 	    value: function changeMonth(month) {
 	      var _this2 = this;
 
-	      this.setState({ date: this.state.date.clone().set('month', month) }, function (_) {
+	      this.setState({ date: this.state.date.clone().set('month', month) }, function () {
 	        return _this2.handleMonthChange(_this2.state.date);
 	      });
 	    }
@@ -38183,7 +38195,7 @@
 	    value: function decreaseMonth() {
 	      var _this3 = this;
 
-	      this.setState({ date: this.state.date.clone().subtract(1, 'month') }, function (_) {
+	      this.setState({ date: this.state.date.clone().subtract(1, 'month') }, function () {
 	        return _this3.handleMonthChange(_this3.state.date);
 	      });
 	    }
@@ -38284,7 +38296,7 @@
 	    value: function increaseMonth() {
 	      var _this4 = this;
 
-	      this.setState({ date: this.state.date.clone().add(1, 'month') }, function (_) {
+	      this.setState({ date: this.state.date.clone().add(1, 'month') }, function () {
 	        return _this4.handleMonthChange(_this4.state.date);
 	      });
 	    }
@@ -38358,7 +38370,9 @@
 	              this.header(monthDate)
 	            )
 	          ),
-	          _react2.default.createElement(_month2.default, { day: monthDate,
+	          _react2.default.createElement(_month2.default, {
+	            canUnselectOutOfRangeDates: this.props.canUnselectOutOfRangeDates,
+	            day: monthDate,
 	            endDate: this.props.endDate,
 	            excludeDates: this.props.excludeDates,
 	            filterDate: this.props.filterDate,
@@ -38432,7 +38446,9 @@
 	        return;
 	      }
 
-	      return _react2.default.createElement(_year_dropdown2.default, { dropdownMode: this.props.dropdownMode,
+	      return _react2.default.createElement(_year_dropdown2.default, {
+	        canUnselectOutOfRangeDates: this.props.canUnselectOutOfRangeDates,
+	        dropdownMode: this.props.dropdownMode,
 	        maxDate: this.props.maxDate,
 	        minDate: this.props.minDate,
 	        onChange: this.changeYear,
@@ -38461,11 +38477,12 @@
 	Calendar.defaultProps = {
 	  forceShowMonthNavigation: false,
 	  monthsShown: 1,
-	  onDropdownFocus: function onDropdownFocus(_) {},
+	  onDropdownFocus: function onDropdownFocus() {},
 	  utcOffset: _moment2.default.utc().utcOffset()
 	};
 
 	Calendar.propTypes = {
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool,
 	  className: _propTypes2.default.string,
 	  children: _propTypes2.default.node,
 	  dateFormat: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.array]).isRequired,
@@ -54432,7 +54449,8 @@
 	    value: function renderSelectMode() {
 	      return _react2.default.createElement(
 	        'select',
-	        { className: 'react-datepicker__year-select',
+	        {
+	          className: 'react-datepicker__year-select',
 	          onChange: this.onSelectChange,
 	          value: this.props.year },
 	        this.renderSelectOptions()
@@ -54441,8 +54459,9 @@
 	  }, {
 	    key: 'renderSelectOptions',
 	    value: function renderSelectOptions() {
-	      var minYear = this.props.minDate ? this.props.minDate.year() : 1900;
-	      var maxYear = this.props.maxDate ? this.props.maxDate.year() : 2100;
+	      var minYear = this.props.minDate && !this.props.canUnselectOutOfRangeDates ? this.props.minDate.year() : 1900;
+
+	      var maxYear = this.props.maxDate && !this.props.canUnselectOutOfRangeDates ? this.props.maxDate.year() : 2100;
 
 	      var options = [];
 	      for (var i = minYear; i <= maxYear; i++) {
@@ -54476,7 +54495,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'react-datepicker__year-dropdown-container react-datepicker__year-dropdown-container--' + this.props.dropdownMode },
+	        { className: 'react-datepicker__year-dropdown-container\n        react-datepicker__year-dropdown-container--' + this.props.dropdownMode },
 	        renderedDropdown
 	      );
 	    }
@@ -54486,6 +54505,7 @@
 	}(_react.Component);
 
 	YearDropdown.propTypes = {
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool,
 	  dropdownMode: _propTypes2.default.oneOf(['scroll', 'select']).isRequired,
 	  maxDate: _propTypes2.default.object,
 	  minDate: _propTypes2.default.object,
@@ -54624,13 +54644,13 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function generateYears(year, noOfYear) {
+	var generateYears = function generateYears(year, noOfYear) {
 	  var list = [];
 	  for (var i = 0; i < 2 * noOfYear; i++) {
 	    list.push(year + noOfYear - i);
 	  }
 	  return list;
-	}
+	};
 
 	var YearDropdownOptions = function (_Component) {
 	  _inherits(YearDropdownOptions, _Component);
@@ -54686,7 +54706,7 @@
 	          { className: 'react-datepicker__year-option',
 	            key: year,
 	            ref: year,
-	            onClick: function onClick(_) {
+	            onClick: function onClick() {
 	              return _this2.onChange(year);
 	            } },
 	          selectedYear === year ? _react2.default.createElement(
@@ -56129,7 +56149,7 @@
 	          'div',
 	          { className: 'react-datepicker__month-option',
 	            key: month,
-	            onClick: function onClick(_) {
+	            onClick: function onClick() {
 	              return _this2.onChange(i);
 	            },
 	            ref: month },
@@ -56272,7 +56292,9 @@
 	      var weeks = [];
 
 	      while (true) {
-	        weeks.push(_react2.default.createElement(_week2.default, { day: currentWeekStart,
+	        weeks.push(_react2.default.createElement(_week2.default, {
+	          canUnselectOutOfRangeDates: this.props.canUnselectOutOfRangeDates,
+	          day: currentWeekStart,
 	          endDate: this.props.endDate,
 	          excludeDates: this.props.excludeDates,
 	          filterDate: this.props.filterDate,
@@ -56330,6 +56352,7 @@
 	}(_react.Component);
 
 	Month.propTypes = {
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool,
 	  day: _propTypes2.default.object.isRequired,
 	  endDate: _propTypes2.default.object,
 	  excludeDates: _propTypes2.default.array,
@@ -56434,7 +56457,9 @@
 
 	      return days.concat([0, 1, 2, 3, 4, 5, 6].map(function (offset) {
 	        var day = startOfWeek.clone().add(offset, 'days');
-	        return _react2.default.createElement(_day2.default, { day: day,
+	        return _react2.default.createElement(_day2.default, {
+	          canUnselectOutOfRangeDates: _this2.props.canUnselectOutOfRangeDates,
+	          day: day,
 	          endDate: _this2.props.endDate,
 	          excludeDates: _this2.props.excludeDates,
 	          filterDate: _this2.props.filterDate,
@@ -56475,6 +56500,7 @@
 	}(_react.Component);
 
 	Week.propTypes = {
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool,
 	  day: _propTypes2.default.object.isRequired,
 	  endDate: _propTypes2.default.object,
 	  excludeDates: _propTypes2.default.array,
@@ -56760,7 +56786,8 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { 'aria-label': 'day-' + this.props.day.date(),
+	        {
+	          'aria-label': 'day-' + this.props.day.date(),
 	          className: this.getClassNames(),
 	          onClick: this.handleClick,
 	          onMouseEnter: this.handleMouseEnter,
@@ -56778,6 +56805,8 @@
 	};
 
 	Day.propTypes = {
+	  // This is passed to the isDisabled() method as a part of this.props
+	  canUnselectOutOfRangeDates: _propTypes2.default.bool, // eslint-disable-line react/no-unused-prop-types
 	  day: _propTypes2.default.object.isRequired,
 	  endDate: _propTypes2.default.object,
 	  highlightDates: _propTypes2.default.array,
@@ -56805,6 +56834,9 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	exports.isSameDay = isSameDay;
 	exports.isSameUtcOffset = isSameUtcOffset;
 	exports.isDayInRange = isDayInRange;
@@ -56846,11 +56878,26 @@
 
 	function isDayDisabled(day) {
 	  var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	      canUnselectOutOfRangeDates = _ref.canUnselectOutOfRangeDates,
 	      minDate = _ref.minDate,
 	      maxDate = _ref.maxDate,
 	      excludeDates = _ref.excludeDates,
 	      includeDates = _ref.includeDates,
-	      filterDate = _ref.filterDate;
+	      filterDate = _ref.filterDate,
+	      selected = _ref.selected;
+
+	  if (canUnselectOutOfRangeDates) {
+	    if (Array.isArray(selected)) {
+	      for (var i = 0; i < selected.length; i++) {
+	        if (isSameDay(day, selected[i])) {
+	          return false;
+	        }
+	      }
+	      return true;
+	    } else if ((typeof selected === 'undefined' ? 'undefined' : _typeof(selected)) === 'object' && isSameDay(day, selected)) {
+	      return false;
+	    }
+	  }
 
 	  return minDate && day.isBefore(minDate, 'day') || maxDate && day.isAfter(maxDate, 'day') || excludeDates && excludeDates.some(function (excludeDate) {
 	    return isSameDay(day, excludeDate);
@@ -56861,9 +56908,11 @@
 
 	function allDaysDisabledBefore(day, unit) {
 	  var _ref2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+	      canUnselectOutOfRangeDates = _ref2.canUnselectOutOfRangeDates,
 	      minDate = _ref2.minDate,
 	      includeDates = _ref2.includeDates;
 
+	  if (canUnselectOutOfRangeDates) return false;
 	  var dateBefore = day.clone().subtract(1, unit);
 	  return minDate && dateBefore.isBefore(minDate, unit) || includeDates && includeDates.every(function (includeDate) {
 	    return dateBefore.isBefore(includeDate, unit);
@@ -56872,9 +56921,11 @@
 
 	function allDaysDisabledAfter(day, unit) {
 	  var _ref3 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+	      canUnselectOutOfRangeDates = _ref3.canUnselectOutOfRangeDates,
 	      maxDate = _ref3.maxDate,
 	      includeDates = _ref3.includeDates;
 
+	  if (canUnselectOutOfRangeDates) return false;
 	  var dateAfter = day.clone().add(1, unit);
 	  return maxDate && dateAfter.isAfter(maxDate, unit) || includeDates && includeDates.every(function (includeDate) {
 	    return dateAfter.isAfter(includeDate, unit);
@@ -57024,7 +57075,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	function childrenPropType(_ref, propName, componentName) {
+	var childrenPropType = function childrenPropType(_ref, propName, componentName) {
 	  var children = _ref.children;
 
 	  var childCount = _react2.default.Children.count(children);
@@ -57034,7 +57085,7 @@
 	  } else if (childCount > 2) {
 	    return new Error('Only a max of two children allowed in ' + componentName + '.');
 	  }
-	}
+	};
 
 	var attachmentPositions = ['top left', 'top center', 'top right', 'middle left', 'middle center', 'middle right', 'bottom left', 'bottom center', 'bottom right'];
 
@@ -59595,6 +59646,122 @@
 
 	var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
 
+	var _moment = __webpack_require__(349);
+
+	var _moment2 = _interopRequireDefault(_moment);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var SpecificDateRangeCanUnselect = function (_React$Component) {
+	  _inherits(SpecificDateRangeCanUnselect, _React$Component);
+
+	  function SpecificDateRangeCanUnselect() {
+	    var _ref;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, SpecificDateRangeCanUnselect);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SpecificDateRangeCanUnselect.__proto__ || Object.getPrototypeOf(SpecificDateRangeCanUnselect)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+	      dates: []
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(SpecificDateRangeCanUnselect, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'row' },
+	        _react2.default.createElement(
+	          'pre',
+	          { className: 'column example__code' },
+	          _react2.default.createElement(
+	            'code',
+	            { className: 'jsx' },
+	            '<DatePicker',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              '  canUnselectOutOfRangeDates={true}'
+	            ),
+	            _react2.default.createElement('br', null),
+	            '  selectMultiple={true}',
+	            _react2.default.createElement('br', null),
+	            '  selected={this.state.dates}',
+	            _react2.default.createElement('br', null),
+	            '  onChange={this.handleChange}',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              '  minDate={moment()}'
+	            ),
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              '  maxDate={moment().add(5, "days")}'
+	            ),
+	            _react2.default.createElement('br', null),
+	            '  placeholderText="Select a date between today and 5 days in the future"',
+	            _react2.default.createElement('br', null),
+	            '/>'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'column' },
+	          _react2.default.createElement(_reactDatepicker2.default, {
+	            canUnselectOutOfRangeDates: true,
+	            maxDate: (0, _moment2.default)().add(5, 'days'),
+	            minDate: (0, _moment2.default)(),
+	            onChange: this.handleChange,
+	            placeholderText: 'Select a date between today and 5 days in the future',
+	            selected: this.state.dates,
+	            selectMultiple: true
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SpecificDateRangeCanUnselect;
+	}(_react2.default.Component);
+
+	exports.default = SpecificDateRangeCanUnselect;
+
+/***/ }),
+/* 492 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDatepicker = __webpack_require__(347);
+
+	var _reactDatepicker2 = _interopRequireDefault(_reactDatepicker);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59672,7 +59839,7 @@
 	exports.default = CustomStartDate;
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59772,7 +59939,7 @@
 	exports.default = ExcludeDates;
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59873,7 +60040,7 @@
 	exports.default = highlightDates;
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59974,7 +60141,7 @@
 	exports.default = includeDates;
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60074,7 +60241,7 @@
 	exports.default = FilterDates;
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60168,7 +60335,7 @@
 	exports.default = Disabled;
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60265,7 +60432,7 @@
 	exports.default = DisabledKeyboardNavigation;
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60350,7 +60517,7 @@
 	exports.default = ClearInput;
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60462,7 +60629,7 @@
 	exports.default = Disabled;
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60548,7 +60715,7 @@
 	exports.default = Placement;
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60659,7 +60826,7 @@
 	exports.default = DateRange;
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60743,7 +60910,7 @@
 	exports.default = TabIndex;
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60829,7 +60996,7 @@
 	exports.default = YearDropdown;
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60913,7 +61080,7 @@
 	exports.default = MonthDropdown;
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61000,7 +61167,7 @@
 	exports.default = YearDropdown;
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61084,7 +61251,7 @@
 	exports.default = Today;
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61245,7 +61412,7 @@
 	exports.default = TimeZoneDate;
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61329,7 +61496,7 @@
 	exports.default = Inline;
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61416,7 +61583,7 @@
 	exports.default = OpenToDate;
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61505,7 +61672,7 @@
 	exports.default = FixedCalendar;
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61589,7 +61756,7 @@
 	exports.default = Default;
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61708,7 +61875,7 @@
 	exports.default = CustomInput;
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61792,7 +61959,7 @@
 	exports.default = MultiMonth;
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61877,7 +62044,7 @@
 	exports.default = MultiMonthDrp;
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61968,7 +62135,7 @@
 	exports.default = Children;
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62052,7 +62219,7 @@
 	exports.default = WithPortal;
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62147,7 +62314,7 @@
 	exports.default = InlinePortalVersion;
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62243,15 +62410,15 @@
 	exports.default = RawChanges;
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 520 */
-519,
 /* 521 */
+520,
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -62318,7 +62485,7 @@
 	exports.default = HeroExample;
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/**

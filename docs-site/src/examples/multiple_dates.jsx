@@ -17,7 +17,7 @@ export default class Default extends React.Component {
           <code className="jsx">{`
 <DatePicker
   selected={this.state.datesArray}
-  selectMultiple={true}
+  selectMultiple
   onChange={this.handleChange}
 />
 `}

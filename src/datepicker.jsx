@@ -22,7 +22,7 @@ const WrappedCalendar = onClickOutside(Calendar)
  * General datepicker component.
  */
 class DatePicker extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = this.calcInitialState()
@@ -50,11 +50,11 @@ class DatePicker extends Component {
     this.setSelected = this.setSelected.bind(this)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.clearPreventFocusTimeout()
   }
 
-  calcInitialState () {
+  calcInitialState() {
     const defaultPreSelection =
       this.props.openToDate ? moment(this.props.openToDate)
       : this.props.selectsEnd && this.props.startDate ? moment(this.props.startDate)
@@ -80,12 +80,12 @@ class DatePicker extends Component {
     }
   }
 
-  cancelFocusInput () {
+  cancelFocusInput() {
     clearTimeout(this.inputFocusTimeout)
     this.inputFocusTimeout = null
   }
 
-  changeSelectedValues (newDate) {
+  changeSelectedValues(newDate) {
     let selected = this.props.selected || []
     let spliceIndex = -1
     let isIncluded = false
@@ -128,18 +128,18 @@ class DatePicker extends Component {
     this.setState({ selected, preSelection: newDate })
   }
 
-  clearPreventFocusTimeout () {
+  clearPreventFocusTimeout() {
     if (this.preventFocusTimeout) {
       clearTimeout(this.preventFocusTimeout)
     }
   }
 
-  deferFocusInput () {
+  deferFocusInput() {
     this.cancelFocusInput()
-    this.inputFocusTimeout = window.setTimeout(_ => this.setFocus(), 1)
+    this.inputFocusTimeout = window.setTimeout(() => this.setFocus(), 1)
   }
 
-  handleBlur (event) {
+  handleBlur(event) {
     if (this.state.open) {
       this.deferFocusInput()
     }
@@ -148,7 +148,7 @@ class DatePicker extends Component {
     }
   }
 
-  handleCalendarClickOutside (event) {
+  handleCalendarClickOutside(event) {
     this.setOpen(false)
     this.props.onClickOutside(event)
 
@@ -157,7 +157,7 @@ class DatePicker extends Component {
     }
   }
 
-  handleChange (event) {
+  handleChange(event) {
     if (this.props.onChangeRaw) {
       this.props.onChangeRaw(event)
 
@@ -175,22 +175,22 @@ class DatePicker extends Component {
     }
   }
 
-  handleDropdownFocus () {
+  handleDropdownFocus() {
     this.cancelFocusInput()
   }
 
-  handleFocus (event) {
+  handleFocus(event) {
     if (!this.state.preventFocus) {
       this.props.onFocus(event)
       this.setOpen(true)
     }
   }
 
-  handleSelect (date, event) {
+  handleSelect(date, event) {
     // Preventing onFocus event to fix issue
     // https://github.com/Hacker0x01/react-datepicker/issues/628
-    this.setState({ preventFocus: true }, _ => {
-      this.preventFocusTimeout = setTimeout(_ => this.setState({ preventFocus: false }), 50)
+    this.setState({ preventFocus: true }, () => {
+      this.preventFocusTimeout = setTimeout(() => this.setState({ preventFocus: false }), 50)
       return this.preventFocusTimeout
     })
 
@@ -201,18 +201,18 @@ class DatePicker extends Component {
     }
   }
 
-  onClearClick (event) {
+  onClearClick(event) {
     event.preventDefault()
     this.props.onChange(null, event, [])
   }
 
-  onInputClick () {
+  onInputClick() {
     if (!this.props.disabled) {
       this.setOpen(true)
     }
   }
 
-  onInputKeyDown (event) {
+  onInputKeyDown(event) {
     if (!this.state.open && !this.props.inline) {
       this.onInputClick()
       return
@@ -281,13 +281,15 @@ class DatePicker extends Component {
     }
   }
 
-  renderCalendar () {
+  renderCalendar() {
     if (!this.props.inline && (!this.state.open || this.props.disabled)) {
       return null
     }
 
     return (
-      <WrappedCalendar className={this.props.calendarClassName}
+      <WrappedCalendar
+        canUnselectOutOfRangeDates={this.props.canUnselectOutOfRangeDates}
+        className={this.props.calendarClassName}
         dateFormat={this.props.dateFormatCalendar}
         dropdownMode={this.props.dropdownMode}
         endDate={this.props.endDate}
@@ -326,7 +328,7 @@ class DatePicker extends Component {
     )
   }
 
-  renderClearButton () {
+  renderClearButton() {
     if (this.props.isClearable && this.props.selected != null) {
       return <a className="react-datepicker__close-icon" href="#" onClick={this.onClearClick} />
     }
@@ -335,7 +337,7 @@ class DatePicker extends Component {
     }
   }
 
-  renderDateInput () {
+  renderDateInput() {
     const className = classnames(this.props.className, {
       [outsideClickIgnoreClass]: this.state.open
     })
@@ -371,11 +373,11 @@ class DatePicker extends Component {
     })
   }
 
-  setFocus () {
+  setFocus() {
     this.refs.input.focus()
   }
 
-  setOpen (open) {
+  setOpen(open) {
     let preSelection = this.state.preSelection
 
     if (!preSelection) {
@@ -385,7 +387,7 @@ class DatePicker extends Component {
     this.setState({ open, preSelection })
   }
 
-  setPreSelection (date) {
+  setPreSelection(date) {
     const isDateRangePresent = ((typeof this.props.minDate !== 'undefined') && (typeof this.props.maxDate !== 'undefined'))
     const isValidDateSelection = isDateRangePresent && date ? isDayInRange(date, this.props.minDate, this.props.maxDate) : true
 
@@ -394,7 +396,7 @@ class DatePicker extends Component {
     }
   }
 
-  setSelected (date, event, keepInput) {
+  setSelected(date, event, keepInput) {
     let changedDate = date
 
     if (changedDate !== null && isDayDisabled(changedDate, this.props)) {
@@ -426,7 +428,7 @@ class DatePicker extends Component {
     }
   }
 
-  render () {
+  render() {
     const calendar = this.renderCalendar()
 
     if (this.props.inline && !this.props.withPortal) {
@@ -457,7 +459,8 @@ class DatePicker extends Component {
     }
 
     return (
-      <TetherComponent attachment={this.props.popoverAttachment}
+      <TetherComponent
+        attachment={this.props.popoverAttachment}
         classPrefix={'react-datepicker__tether'}
         constraints={this.props.tetherConstraints}
         renderElementTo={this.props.renderCalendarTo}
@@ -474,18 +477,19 @@ class DatePicker extends Component {
 }
 
 DatePicker.defaultProps = {
+  canUnselectOutOfRangeDates: false,
   dateFormat: 'L',
   dateFormatCalendar: 'MMMM YYYY',
   disabled: false,
   disabledKeyboardNavigation: false,
   dropdownMode: 'scroll',
   monthsShown: 1,
-  onBlur: _ => {},
-  onChange: _ => {},
-  onFocus: _ => {},
-  onSelect: _ => {},
-  onClickOutside: _ => {},
-  onMonthChange: _ => {},
+  onBlur: () => {},
+  onChange: () => {},
+  onFocus: () => {},
+  onSelect: () => {},
+  onClickOutside: () => {},
+  onMonthChange: () => {},
   popoverAttachment: 'top left',
   popoverTargetAttachment: 'bottom left',
   popoverTargetOffset: '10px 0',
@@ -502,6 +506,7 @@ DatePicker.propTypes = {
   autoComplete: PropTypes.string,
   autoFocus: PropTypes.bool,
   calendarClassName: PropTypes.string,
+  canUnselectOutOfRangeDates: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   customInput: PropTypes.element,

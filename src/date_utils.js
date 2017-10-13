@@ -24,7 +24,22 @@ export function isDayInRange (day, startDate, endDate) {
   return day.clone().startOf('day').isBetween(before, after)
 }
 
-export function isDayDisabled (day, { minDate, maxDate, excludeDates, includeDates, filterDate } = {}) {
+export function isDayDisabled (day, { canUnselectOutOfRangeDates, minDate, maxDate, excludeDates,
+  includeDates, filterDate, selected } = {}) {
+  if (canUnselectOutOfRangeDates) {
+    if (Array.isArray(selected)) {
+      for (let i = 0; i < selected.length; i++) {
+        if (isSameDay(day, selected[i])) {
+          return false
+        }
+      }
+      return true
+    }
+    else if (typeof selected === 'object' && isSameDay(day, selected)) {
+      return false
+    }
+  }
+
   return (minDate && day.isBefore(minDate, 'day')) ||
     (maxDate && day.isAfter(maxDate, 'day')) ||
     (excludeDates && excludeDates.some(excludeDate => isSameDay(day, excludeDate))) ||
@@ -33,14 +48,16 @@ export function isDayDisabled (day, { minDate, maxDate, excludeDates, includeDat
     false
 }
 
-export function allDaysDisabledBefore (day, unit, { minDate, includeDates } = {}) {
+export function allDaysDisabledBefore (day, unit, { canUnselectOutOfRangeDates, minDate, includeDates } = {}) {
+  if (canUnselectOutOfRangeDates) return false
   const dateBefore = day.clone().subtract(1, unit)
   return (minDate && dateBefore.isBefore(minDate, unit)) ||
     (includeDates && includeDates.every(includeDate => dateBefore.isBefore(includeDate, unit))) ||
     false
 }
 
-export function allDaysDisabledAfter (day, unit, { maxDate, includeDates } = {}) {
+export function allDaysDisabledAfter (day, unit, { canUnselectOutOfRangeDates, maxDate, includeDates } = {}) {
+  if (canUnselectOutOfRangeDates) return false
   const dateAfter = day.clone().add(1, unit)
   return (maxDate && dateAfter.isAfter(maxDate, unit)) ||
     (includeDates && includeDates.every(includeDate => dateAfter.isAfter(includeDate, unit))) ||

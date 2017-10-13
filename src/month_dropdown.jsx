@@ -7,7 +7,7 @@ import moment from 'moment'
 const WrappedMonthDropdownOptions = onClickOutside(MonthDropdownOptions)
 
 class MonthDropdown extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -23,7 +23,7 @@ class MonthDropdown extends Component {
     this.toggleDropdown = this.toggleDropdown.bind(this)
   }
 
-  onChange (month) {
+  onChange(month) {
     this.toggleDropdown()
 
     if (month !== this.props.month) {
@@ -31,7 +31,7 @@ class MonthDropdown extends Component {
     }
   }
 
-  renderDropdown (monthNames) {
+  renderDropdown(monthNames) {
     return (
       <WrappedMonthDropdownOptions key="dropdown"
         month={this.props.month}
@@ -42,7 +42,7 @@ class MonthDropdown extends Component {
     )
   }
 
-  renderReadView (visible, monthNames) {
+  renderReadView(visible, monthNames) {
     return (
       <div key="read"
         style={{visibility: visible ? 'visible' : 'hidden'}}
@@ -56,7 +56,7 @@ class MonthDropdown extends Component {
     )
   }
 
-  renderScrollMode (monthNames) {
+  renderScrollMode(monthNames) {
     const { dropdownVisible } = this.state
 
     let result = [this.renderReadView(!dropdownVisible, monthNames)]
@@ -68,7 +68,7 @@ class MonthDropdown extends Component {
     return result
   }
 
-  renderSelectMode (monthNames) {
+  renderSelectMode(monthNames) {
     return (
       <select value={this.props.month} className="react-datepicker__month-select" onChange={e => this.onChange(e.target.value)}>
         {this.renderSelectOptions(monthNames)}
@@ -76,15 +76,15 @@ class MonthDropdown extends Component {
     )
   }
 
-  renderSelectOptions (monthNames) {
+  renderSelectOptions(monthNames) {
     return monthNames.map((M, i) => <option key={i} value={i}>{M}</option>)
   }
 
-  toggleDropdown () {
+  toggleDropdown() {
     this.setState({ dropdownVisible: !this.state.dropdownVisible })
   }
 
-  render () {
+  render() {
     const localeData = moment.localeData(this.props.locale)
     const monthNames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(M => localeData.months(moment({M}), this.props.dateFormat))
 

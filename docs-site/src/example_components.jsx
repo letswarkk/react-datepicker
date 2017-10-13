@@ -9,6 +9,7 @@ import CustomCalendarClassName from './examples/custom_calendar_class_name'
 import MultipleDates from './examples/multiple_dates'
 import PlaceholderText from './examples/placeholder_text'
 import SpecificDateRange from './examples/specific_date_range'
+import SpecificDateRangeCanUnselect from './examples/specific_date_range_can_unselect'
 import Locale from './examples/locale'
 import ExcludeDates from './examples/exclude_dates'
 import HighlightDates from './examples/highlight_dates'
@@ -81,6 +82,10 @@ export default class exampleComponents extends React.Component {
   {
     title: 'Specific date range',
     component: <SpecificDateRange />
+  },
+  {
+    title: 'Specific date range (allow unselecting expired dates)',
+    component: <SpecificDateRangeCanUnselect />
   },
   {
     title: 'Locale',

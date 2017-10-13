@@ -6,7 +6,7 @@ import Week from './week'
 const FIXED_HEIGHT_STANDARD_WEEK_COUNT = 6
 
 class Month extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.getClassNames = this.getClassNames.bind(this)
@@ -17,7 +17,7 @@ class Month extends Component {
     this.renderWeeks = this.renderWeeks.bind(this)
   }
 
-  getClassNames () {
+  getClassNames() {
     const {
       selectingDate,
       selectsStart,
@@ -29,31 +29,31 @@ class Month extends Component {
     })
   }
 
-  handleDayClick (day, event) {
+  handleDayClick(day, event) {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
   }
 
-  handleDayMouseEnter (day) {
+  handleDayMouseEnter(day) {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
   }
 
-  handleMouseLeave () {
+  handleMouseLeave() {
     if (this.props.onMouseLeave) {
       this.props.onMouseLeave()
     }
   }
 
-  isWeekInMonth (startOfWeek) {
+  isWeekInMonth(startOfWeek) {
     const day = this.props.day
     const endOfWeek = startOfWeek.clone().add(6, 'days')
     return startOfWeek.isSame(day, 'month') || endOfWeek.isSame(day, 'month')
   }
 
-  renderWeeks () {
+  renderWeeks() {
     const isFixedHeight = this.props.fixedHeight
 
     let breakAfterNextPush = false
@@ -62,7 +62,9 @@ class Month extends Component {
     let weeks = []
 
     while (true) {
-      weeks.push(<Week day={currentWeekStart}
+      weeks.push(<Week
+        canUnselectOutOfRangeDates={this.props.canUnselectOutOfRangeDates}
+        day={currentWeekStart}
         endDate={this.props.endDate}
         excludeDates={this.props.excludeDates}
         filterDate={this.props.filterDate}
@@ -107,7 +109,7 @@ class Month extends Component {
     return weeks
   }
 
-  render () {
+  render() {
     return (
       <div className={this.getClassNames()} onMouseLeave={this.handleMouseLeave} role="listbox">
         {this.renderWeeks()}
@@ -117,6 +119,7 @@ class Month extends Component {
 }
 
 Month.propTypes = {
+  canUnselectOutOfRangeDates: PropTypes.bool,
   day: PropTypes.object.isRequired,
   endDate: PropTypes.object,
   excludeDates: PropTypes.array,

@@ -24,7 +24,7 @@ const isDropdownSelect = (element = {}) => {
 }
 
 class Calendar extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.state = {
@@ -54,7 +54,7 @@ class Calendar extends Component {
     this.renderYearDropdown = this.renderYearDropdown.bind(this)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (nextProps.preSelection && !isSameDay(nextProps.preSelection, this.props.preSelection)) {
       this.setState({ date: this.localizeMoment(nextProps.preSelection) })
     }
@@ -63,19 +63,19 @@ class Calendar extends Component {
     }
   }
 
-  changeMonth (month) {
-    this.setState({ date: this.state.date.clone().set('month', month) }, _ => this.handleMonthChange(this.state.date))
+  changeMonth(month) {
+    this.setState({ date: this.state.date.clone().set('month', month) }, () => this.handleMonthChange(this.state.date))
   }
 
-  changeYear (year) {
+  changeYear(year) {
     this.setState({ date: this.state.date.clone().set('year', year) })
   }
 
-  decreaseMonth () {
-    this.setState({ date: this.state.date.clone().subtract(1, 'month') }, _ => this.handleMonthChange(this.state.date))
+  decreaseMonth() {
+    this.setState({ date: this.state.date.clone().subtract(1, 'month') }, () => this.handleMonthChange(this.state.date))
   }
 
-  getDateInView () {
+  getDateInView() {
     const {
       openToDate,
       preSelection,
@@ -113,35 +113,35 @@ class Calendar extends Component {
     }
   }
 
-  handleClickOutside (event) {
+  handleClickOutside(event) {
     this.props.onClickOutside(event)
   }
 
-  handleDayClick (day, event) {
+  handleDayClick(day, event) {
     this.props.onSelect(day, event)
   }
 
-  handleDayMouseEnter (day) {
+  handleDayMouseEnter(day) {
     this.setState({ selectingDate: day })
   }
 
-  handleDropdownFocus (event) {
+  handleDropdownFocus(event) {
     if (isDropdownSelect(event.target)) {
       this.props.onDropdownFocus()
     }
   }
 
-  handleMonthChange (date) {
+  handleMonthChange(date) {
     if (this.props.onMonthChange) {
       this.props.onMonthChange(date)
     }
   }
 
-  handleMonthMouseLeave () {
+  handleMonthMouseLeave() {
     this.setState({ selectingDate: null })
   }
 
-  header (date = this.state.date) {
+  header(date = this.state.date) {
     const startOfWeek = date.clone().startOf('week')
     let dayNames = []
 
@@ -160,15 +160,15 @@ class Calendar extends Component {
     }))
   }
 
-  increaseMonth () {
-    this.setState({ date: this.state.date.clone().add(1, 'month') }, _ => this.handleMonthChange(this.state.date))
+  increaseMonth() {
+    this.setState({ date: this.state.date.clone().add(1, 'month') }, () => this.handleMonthChange(this.state.date))
   }
 
-  localizeMoment (date) {
+  localizeMoment(date) {
     return date.clone().locale(this.props.locale || moment.locale())
   }
 
-  renderCurrentMonth (date = this.state.date) {
+  renderCurrentMonth(date = this.state.date) {
     let classes = ['react-datepicker__current-month']
 
     if (this.props.showYearDropdown) {
@@ -186,7 +186,7 @@ class Calendar extends Component {
     )
   }
 
-  renderMonthDropdown (overrideHide = false) {
+  renderMonthDropdown(overrideHide = false) {
     if (!this.props.showMonthDropdown) {
       return
     }
@@ -200,7 +200,7 @@ class Calendar extends Component {
     )
   }
 
-  renderMonths () {
+  renderMonths() {
     let monthList = []
 
     for (let i = 0; i < this.props.monthsShown; ++i) {
@@ -221,7 +221,9 @@ class Calendar extends Component {
             </div>
           </div>
 
-          <Month day={monthDate}
+          <Month
+            canUnselectOutOfRangeDates={this.props.canUnselectOutOfRangeDates}
+            day={monthDate}
             endDate={this.props.endDate}
             excludeDates={this.props.excludeDates}
             filterDate={this.props.filterDate}
@@ -250,7 +252,7 @@ class Calendar extends Component {
     return monthList
   }
 
-  renderNextMonthButton () {
+  renderNextMonthButton() {
     if (!this.props.forceShowMonthNavigation && allDaysDisabledAfter(this.state.date, 'month', this.props)) {
       return
     }
@@ -259,7 +261,7 @@ class Calendar extends Component {
       onClick={this.increaseMonth} />
   }
 
-  renderPreviousMonthButton () {
+  renderPreviousMonthButton() {
     if (!this.props.forceShowMonthNavigation && allDaysDisabledBefore(this.state.date, 'month', this.props)) {
       return
     }
@@ -268,7 +270,7 @@ class Calendar extends Component {
       onClick={this.decreaseMonth} />
   }
 
-  renderTodayButton () {
+  renderTodayButton() {
     if (!this.props.todayButton) {
       return
     }
@@ -281,13 +283,15 @@ class Calendar extends Component {
     )
   }
 
-  renderYearDropdown (overrideHide = false) {
+  renderYearDropdown(overrideHide = false) {
     if (!this.props.showYearDropdown || overrideHide) {
       return
     }
 
     return (
-      <YearDropdown dropdownMode={this.props.dropdownMode}
+      <YearDropdown
+        canUnselectOutOfRangeDates={this.props.canUnselectOutOfRangeDates}
+        dropdownMode={this.props.dropdownMode}
         maxDate={this.props.maxDate}
         minDate={this.props.minDate}
         onChange={this.changeYear}
@@ -296,7 +300,7 @@ class Calendar extends Component {
     )
   }
 
-  render () {
+  render() {
     return (
       <div className={classnames('react-datepicker', this.props.className)}>
         <div className="react-datepicker__triangle" />
@@ -313,11 +317,12 @@ class Calendar extends Component {
 Calendar.defaultProps = {
   forceShowMonthNavigation: false,
   monthsShown: 1,
-  onDropdownFocus: _ => {},
+  onDropdownFocus: () => {},
   utcOffset: moment.utc().utcOffset()
 }
 
 Calendar.propTypes = {
+  canUnselectOutOfRangeDates: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
   dateFormat: PropTypes.oneOfType([

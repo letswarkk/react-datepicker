@@ -54,5 +54,6 @@
     "react/self-closing-comp": 2,
     "react/sort-comp": 2,
     "react/wrap-multilines": 0,
+    "space-before-function-paren": 0,
   }
 }

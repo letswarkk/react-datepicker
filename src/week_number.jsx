@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class WeekNumber extends Component {
-  render () {
+  render() {
     return (
       <div aria-label={`week-${this.props.weekNumber}`}
         className="react-datepicker__week-number">

@@ -4,7 +4,7 @@ import Day from './day'
 import WeekNumber from './week_number'
 
 class Week extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.handleDayClick = this.handleDayClick.bind(this)
@@ -12,19 +12,19 @@ class Week extends Component {
     this.renderDays = this.renderDays.bind(this)
   }
 
-  handleDayClick (day, event) {
+  handleDayClick(day, event) {
     if (this.props.onDayClick) {
       this.props.onDayClick(day, event)
     }
   }
 
-  handleDayMouseEnter (day) {
+  handleDayMouseEnter(day) {
     if (this.props.onDayMouseEnter) {
       this.props.onDayMouseEnter(day)
     }
   }
 
-  renderDays () {
+  renderDays() {
     const startOfWeek = this.props.day.clone().startOf('week')
     let days = []
 
@@ -35,7 +35,9 @@ class Week extends Component {
     return days.concat([0, 1, 2, 3, 4, 5, 6].map(offset => {
       const day = startOfWeek.clone().add(offset, 'days')
       return (
-        <Day day={day}
+        <Day
+          canUnselectOutOfRangeDates={this.props.canUnselectOutOfRangeDates}
+          day={day}
           endDate={this.props.endDate}
           excludeDates={this.props.excludeDates}
           filterDate={this.props.filterDate}
@@ -59,7 +61,7 @@ class Week extends Component {
     }))
   }
 
-  render () {
+  render() {
     return (
       <div className="react-datepicker__week">
         {this.renderDays()}
@@ -69,6 +71,7 @@ class Week extends Component {
 }
 
 Week.propTypes = {
+  canUnselectOutOfRangeDates: PropTypes.bool,
   day: PropTypes.object.isRequired,
   endDate: PropTypes.object,
   excludeDates: PropTypes.array,
