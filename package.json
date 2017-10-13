@@ -2,7 +2,7 @@
   "author": "Lubos",
   "name": "react-datepicker-multiple-lmenus",
   "description": "A simple and reusable datepicker component for React",
-  "version": "0.48.0",
+  "version": "0.49.0",
   "license": "MIT",
   "homepage": "https://github.com/lmenus/react-datepicker",
   "main": "dist/react-datepicker.min.js",
