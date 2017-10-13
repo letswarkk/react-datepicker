@@ -59456,7 +59456,7 @@
 	          _react2.default.createElement(
 	            'code',
 	            { className: 'jsx' },
-	            '\n<DatePicker\n  selected={this.state.datesArray}\n  selectMultiple={true}\n  onChange={this.handleChange}\n/>\n'
+	            '\n<DatePicker\n  selected={this.state.datesArray}\n  selectMultiple\n  onChange={this.handleChange}\n/>\n'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -59694,10 +59694,10 @@
 	            _react2.default.createElement(
 	              'strong',
 	              null,
-	              '  canUnselectOutOfRangeDates={true}'
+	              '  canUnselectOutOfRangeDates'
 	            ),
 	            _react2.default.createElement('br', null),
-	            '  selectMultiple={true}',
+	            '  selectMultiple',
 	            _react2.default.createElement('br', null),
 	            '  selected={this.state.dates}',
 	            _react2.default.createElement('br', null),
@@ -59730,8 +59730,7 @@
 	            onChange: this.handleChange,
 	            placeholderText: 'Select a date between today and 5 days in the future',
 	            selected: this.state.dates,
-	            selectMultiple: true
-	          })
+	            selectMultiple: true })
 	        )
 	      );
 	    }

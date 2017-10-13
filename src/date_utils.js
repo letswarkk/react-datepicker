@@ -33,7 +33,6 @@ export function isDayDisabled (day, { canUnselectOutOfRangeDates, minDate, maxDa
           return false
         }
       }
-      return true
     }
     else if (typeof selected === 'object' && isSameDay(day, selected)) {
       return false
